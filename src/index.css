@@ -1,0 +1,230 @@
+:root {
+  --start: 0;
+  --end: 360;
+  --lightness: 65%;
+  --base-chroma: 0.3;
+  --font-size-min: 14;
+  --font-size-max: 20;
+  --font-ratio-min: 1.1;
+  --font-ratio-max: 1.33;
+  --font-width-min: 375;
+  --font-width-max: 1500;
+}
+
+@keyframes change {
+  to {
+    --hue: var(--end);
+  }
+}
+
+@keyframes chroma-on {
+  to {
+    --chroma: 0.3;
+  }
+}
+
+@keyframes chroma-off {
+  to {
+    --chroma: 0;
+  }
+}
+
+@keyframes brighten {
+  0% {
+    opacity: var(--start-opacity, 0.2);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(var(--brightness, 1.2));
+  }
+  100% {
+    opacity: var(--end-opacity, 0.2);
+  }
+}
+
+/* fluid helper */
+.fluid {
+  --fluid-type: clamp(
+    calc(var(--font-size-min) * 1px),
+    calc(var(--font-size-min) * 1px + (var(--font-size-max) - var(--font-size-min)) * ((100vw - var(--font-width-min) * 1px) / (var(--font-width-max) - var(--font-width-min)))),
+    calc(var(--font-size-max) * 1px)
+  );
+}
+
+/* Skills page card wrapper - matches screenshot */
+.you-can-scroll-scope {
+  position: relative;
+  background: #000;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* grid overlay like screenshot */
+.you-can-scroll-scope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+.you-can-scroll-scope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, transparent 60%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* header - you can scroll. */
+.you-can-scroll-scope header {
+  position: relative;
+  z-index: 1;
+  min-height: 18vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 1rem;
+  background: transparent;
+}
+.you-can-scroll-scope header h1.fluid {
+  font-weight: 800;
+  line-height: 0.9;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: rgba(255,255,255,0.95);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+}
+
+/* main pinned area - visualizes the scrolling verbs */
+.you-can-scroll-scope main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+.you-can-scroll-scope section.content {
+  position: relative;
+  min-height: 68vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem 6rem;
+  gap: 0;
+}
+/* you can prefix */
+.you-can-scroll-scope section.content h2 {
+  font-size: clamp(2.2rem, 7vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: transparent;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+}
+/* verb stack - overlapping grid like screenshot */
+.you-can-scroll-scope section.content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: clamp(280px, 42vh, 420px);
+  display: grid;
+  place-items: center;
+}
+.you-can-scroll-scope section.content ul::before {
+  content: "you can";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateX(-1.8em);
+  font-size: clamp(2.2rem, 7vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #e8e8e8;
+  background: linear-gradient(to bottom, #fff 30%, rgba(255,255,255,0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 2;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.you-can-scroll-scope section.content li {
+  grid-area: 1 / 1;
+  font-size: clamp(2.2rem, 7vw, 5.2rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-align: center;
+  transition: opacity 0.35s, filter 0.35s, color 0.35s, transform 0.35s;
+  color: rgba(255,255,255,0.14);
+  opacity: 0.18;
+  transform: translateY(0) scale(0.98);
+  will-change: opacity, transform, color;
+  padding-left: 3.2em; /* offset for you can */
+  white-space: nowrap;
+}
+/* active verb - neon green like screenshot */
+.you-can-scroll-scope section.content li[style*="opacity: 1"],
+.you-can-scroll-scope section.content li:nth-child(1) {
+  /* first item starts active, GSAP will toggle */
+}
+.you-can-scroll-scope section.content li.is-active {
+  color: hsl(var(--primary));
+  opacity: 1 !important;
+  transform: translateY(0) scale(1);
+  filter: brightness(1.15);
+  text-shadow: 0 0 24px hsl(var(--primary) / 0.35);
+}
+
+/* fin */
+.you-can-scroll-scope section:last-of-type {
+  min-height: 16vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 3rem;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+.you-can-scroll-scope section:last-of-type h2.fluid {
+  font-weight: 800;
+  text-align: center;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  color: rgba(255,255,255,0.9);
+}
+.you-can-scroll-scope footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+}
+
+/* tweakpane Config bar inside card like screenshot */
+.you-can-scroll-scope .tp-dfwv {
+  top: 12px !important;
+  right: 12px !important;
+  left: auto !important;
+  position: absolute !important;
+  z-index: 10 !important;
+  opacity: 0.9;
+}
