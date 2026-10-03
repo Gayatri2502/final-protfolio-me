@@ -12,10 +12,10 @@ export function Footer() {
             <a href="/" className="flex items-center gap-3">
               <span className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-sm font-bold">GS</span>
               <span className="font-display font-semibold">Gayatri Samal</span>
-              <span className="mono-label text-muted-foreground hidden sm:inline">— AI Engineer & Researcher</span>
+              <span className="mono-label text-muted-foreground hidden sm:inline">— AI/ML Portfolio</span>
             </a>
             <p className="mt-4 max-w-[420px] text-sm leading-6 text-muted-foreground">
-              Building intelligent systems that understand, reason, and create. Focus on reliability, speed, and craft.
+              An AI/ML portfolio of intelligent systems that understand, reason, and create. Focus on reliability, speed, and craft.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 mono-label">
               <span className="rounded-full border border-line bg-card px-3 py-1.5">SF · Remote</span>
@@ -69,7 +69,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-line pt-6 mono-label text-muted-foreground">
-          <span>© {year} Gayatri Samal · Crafted with care · Next.js · Deployed on Vercel</span>
+          <span>© {year} Gayatri Samal · AI/ML Portfolio · Next.js · Deployed on Vercel</span>
           <a href="#main-content" className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1.5 hover:border-foreground/20 hover:text-foreground transition-colors">
             Back to top ↑
           </a>

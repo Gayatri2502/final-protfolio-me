@@ -81,7 +81,7 @@ export function FeaturedProjects() {
       <div className="container-custom">
         <div className="flex items-center gap-4 py-6 border-b border-line mono-label text-muted-foreground">
           <span className="text-primary">[02]</span>
-          <span>Selected work</span>
+          <span>Selected AI work</span>
           <span className="h-px flex-1 bg-line ml-2" />
           <span className="hidden sm:inline">2023 — 2024 · 5 shipped</span>
           <a href="/projects" className="hidden sm:inline-flex ml-2 mono-label text-foreground hover:text-primary gap-1 items-center">View all →</a>
@@ -91,10 +91,10 @@ export function FeaturedProjects() {
       <div className="container-custom py-8 lg:py-12">
         <div className="flex items-end justify-between gap-6 mb-6">
           <h2 className="font-display text-3xl lg:text-4xl font-semibold tracking-[-0.03em] leading-none">
-            Work that <span className="italic font-light text-muted-foreground">shipped</span>
+            AI work that <span className="italic font-light text-muted-foreground">shipped</span>
           </h2>
           <p className="hidden lg:block max-w-[420px] text-sm leading-6 text-muted-foreground">
-            Production-grade AI, not demos. Each project includes evals, metrics, and what I’d do differently next time.
+            Production-grade AI from this AI/ML portfolio, not demos. Each project includes evals, metrics, and what I’d do differently next time.
           </p>
         </div>
 

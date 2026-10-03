@@ -13,7 +13,7 @@ export function DigitalProductsSection() {
       <div className="container-custom">
         <div className="flex items-center gap-4 py-6 border-b border-line mono-label text-muted-foreground">
           <span className="text-primary">[05]</span>
-          <span>Lab & experiments</span>
+          <span>AI Lab & experiments</span>
           <span className="h-px flex-1 bg-line ml-2" />
           <span className="hidden sm:inline">Notebook — what I'm testing now</span>
           <a href="/experiments" className="hidden sm:inline-flex ml-2 mono-label text-foreground hover:text-primary gap-1 items-center">Open lab →</a>
@@ -23,10 +23,10 @@ export function DigitalProductsSection() {
       <div className="container-custom py-8 lg:py-12">
         <div className="flex items-end justify-between gap-6 mb-6">
           <h2 className="font-display text-3xl lg:text-4xl font-semibold tracking-[-0.03em] leading-none">
-            In the <span className="italic font-light text-muted-foreground">lab</span>
+            In the <span className="italic font-light text-muted-foreground">AI lab</span>
           </h2>
           <p className="hidden lg:block max-w-[420px] text-sm leading-6 text-muted-foreground">
-            Small bets, measured properly. Every experiment ships with evals, ablations, and a short note.
+            Small ML bets, measured properly. Every experiment in this AI/ML portfolio ships with evals, ablations, and a short note.
           </p>
         </div>
 

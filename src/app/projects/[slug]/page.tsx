@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects } from "@/data/projects";
+import { getProjectBySlug, getRelatedProjects } from "@/services/projects";
 import { ArrowRight, Github, ExternalLink, Mail } from "lucide-react";
 
 interface ProjectPageProps {
@@ -9,7 +9,7 @@ interface ProjectPageProps {
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const resolvedParams = await params;
-  const project = projects.find((p) => p.id === resolvedParams.slug);
+  const project = getProjectBySlug(resolvedParams.slug);
   if (!project) return { title: "Project Not Found" };
   return {
     title: project.title,
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const resolvedParams = await params;
-  const project = projects.find((p) => p.id === resolvedParams.slug);
+  const project = getProjectBySlug(resolvedParams.slug);
 
   if (!project) {
     notFound();
@@ -237,33 +237,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <div className="container-custom">
           <h2 className="text-heading-xl font-medium tracking-tight text-center mb-12">Related Projects</h2>
           <div className="grid gap-8 md:grid-cols-3">
-            {projects
-              .filter((p) => p.id !== typedProject.id && p.category === typedProject.category)
-              .slice(0, 3)
-              .map((related) => (
-                <article key={related.id} className="card-hover overflow-hidden group">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={related.image}
-                      alt={related.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-heading-md font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                      {related.title}
-                    </h3>
-                    <p className="text-body text-muted-foreground mb-4 line-clamp-2">{related.description}</p>
-                    <a
-                      href={`/projects/${related.id}`}
-                      className="text-sm font-medium text-primary hover:text-primary/80 flex items-center gap-1 group"
-                    >
-                      View Project
-                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                    </a>
-                  </div>
-                </article>
-              ))}
+            {getRelatedProjects(typedProject, 3).map((related) => (
+              <article key={related.id} className="card-hover overflow-hidden group">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={related.image}
+                    alt={related.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-heading-md font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {related.title}
+                  </h3>
+                  <p className="text-body text-muted-foreground mb-4 line-clamp-2">{related.description}</p>
+                  <a
+                    href={`/projects/${related.id}`}
+                    className="text-sm font-medium text-primary hover:text-primary/80 flex items-center gap-1 group"
+                  >
+                    View Project
+                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

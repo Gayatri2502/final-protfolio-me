@@ -19,26 +19,26 @@ const chapters: Chapter[] = [
   {
     id: '01',
     title: 'The Origin',
-    subtitle: 'Where silence begins',
+    subtitle: 'Where the AI journey begins',
     videoUrl: 'https://ik.imagekit.io/kqmrslzuq/Videos/1.mp4',
     theme: 'dark',
-    description: 'The moment where motion is born from stillness. Watch the first frame of a story that has not yet been written.',
+    description: 'The moment this AI/ML portfolio begins — a first model, a first dataset, and a story in machine learning not yet written.',
   },
   {
     id: '02',
     title: 'Velocity',
-    subtitle: 'Moving at lightspeed',
+    subtitle: 'Shipping ML at lightspeed',
     videoUrl: 'https://cdn.21st.dev/assets/mirror/13/130f3cb22e97770a1e0a2c66893bf5b63a1c21fd47598839a04d3af34c9da165.mp4',
     theme: 'dark',
-    description: 'City lights blur into streaks of memory as the world accelerates around you. Every frame a new direction.',
+    description: 'Experiments blur into production systems as the portfolio accelerates — every frame a new model shipped.',
   },
   {
     id: '03',
     title: 'Immersion',
-    subtitle: 'Beneath the surface',
+    subtitle: 'Deep in the ML stack',
     videoUrl: 'https://cdn.21st.dev/assets/mirror/5d/5d00d3f51a1f753bb8f106955b9e116d86e82f34b173166ee79275ab10e670b1.mp4',
     theme: 'light',
-    description: 'You drift below the noise into a quiet, weightless space. Sound fades, colors thicken, and focus returns.',
+    description: 'You drift below the hype into real ML — evals, embeddings, and infrastructure. Noise fades, signal returns.',
   },
 ];
 

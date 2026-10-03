@@ -41,10 +41,10 @@ const DEFAULT_SERVICES: ServiceItem[] = [
   {
     id: "data",
     number: "02",
-    title: "Data Related",
-    tagline: "Clean data → trusted decisions",
+    title: "Data & ML Pipelines",
+    tagline: "Clean data → trusted models",
     description:
-      "We turn messy sources into reliable, ML-ready data — pipelines, warehousing, and dashboards that finally match reality. No more spreadsheet archaeology.",
+      "We turn messy sources into reliable, ML-ready data — pipelines, feature stores, and eval datasets that make this AI/ML portfolio possible. No more spreadsheet archaeology.",
     deliverables: [
       "ETL/ELT & Streaming Pipelines",
       "Warehouse & Lakehouse Setup",
@@ -56,10 +56,10 @@ const DEFAULT_SERVICES: ServiceItem[] = [
   {
     id: "website",
     number: "03",
-    title: "Website",
-    tagline: "Fast, findable, and hard to forget",
+    title: "AI Web Experiences",
+    tagline: "Fast AI apps people remember",
     description:
-      "React/Next.js + WebGL where it matters — sub-second loads, fluid scroll, zero CLS, and SEO that actually ranks. Built for conversion, not just looks.",
+      "React/Next.js front-ends for ML systems — streaming chat, eval dashboards, and search UIs with sub-second loads and SEO that ranks. Built for adoption, not just looks.",
     deliverables: [
       "Next.js App Router + Headless CMS",
       "GSAP / Three.js Interactions",
@@ -71,10 +71,10 @@ const DEFAULT_SERVICES: ServiceItem[] = [
   {
     id: "consultancy",
     number: "04",
-    title: "Business Consultancy",
-    tagline: "Clarity before code",
+    title: "AI Strategy & Advisory",
+    tagline: "Clarity before training runs",
     description:
-      "Roadmaps, audits, and build-vs-buy calls grounded in unit economics. We map your customer journey, find the leak, and sequence the fix by ROI.",
+      "Roadmaps, model audits, and build-vs-buy calls grounded in unit economics. We map your AI opportunity, find the highest-ROI use case, and sequence delivery.",
     deliverables: [
       "Product & Tech Audit",
       "Go-to-Market & Pricing Blueprint",
@@ -86,15 +86,15 @@ const DEFAULT_SERVICES: ServiceItem[] = [
   {
     id: "creative",
     number: "05",
-    title: "Video & Graphic Design",
-    tagline: "Scroll-stopping, not scroll-past",
+    title: "AI Demos & Storytelling",
+    tagline: "Demos that earn trust",
     description:
-      "Thumbnails that earn clicks, decks that close, and reels that loop — procedural motion, Lottie, and brand systems that stay consistent at speed.",
+      "Launch videos, conference decks, and interactive demos that explain your ML system — benchmarks visualized, ablations narrated, results that close.",
     deliverables: [
-      "Brand Identity & Design System",
-      "Promo Videos & Reels Editing",
-      "Thumbnail & Social Kit",
-      "Lottie / WebM Motion Exports",
+      "Launch Videos & Model Demos",
+      "Benchmark Visualizations",
+      "Conference Decks & Posters",
+      "Interactive Playground UIs",
     ],
     gradient: "from-rose-500/20 via-purple-600/10 to-transparent",
   },

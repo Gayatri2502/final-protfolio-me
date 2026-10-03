@@ -1,4 +1,3 @@
-// Built using Hyperiux Vault: https://vault.hyperiux.com
 "use client";
 
 import {
@@ -8,40 +7,14 @@ import {
   useLayoutEffect,
   useRef,
   useState,
-  useSyncExternalStore,
 } from "react";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { SplitText } from "gsap/SplitText";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(Flip, SplitText);
-}
-
-const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
-
-function prefersReducedMotion() {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia?.(REDUCED_MOTION_QUERY)?.matches ?? false;
-}
-
-function subscribeToReducedMotion(callback: () => void) {
-  if (typeof window === "undefined") return () => {};
-  const mediaQueryList = window.matchMedia(REDUCED_MOTION_QUERY);
-  mediaQueryList.addEventListener("change", callback);
-  return () => mediaQueryList.removeEventListener("change", callback);
-}
-
-function getServerReducedMotionSnapshot() {
-  return false;
-}
-
-function usePrefersReducedMotion() {
-  return useSyncExternalStore(
-    subscribeToReducedMotion,
-    prefersReducedMotion,
-    getServerReducedMotionSnapshot
-  );
 }
 
 const CAPTION_FONT_VW = 1;
@@ -106,38 +79,38 @@ const defaultItems: GsapFlipCardItem[] = [
   {
     id: 0,
     image: UNSPLASH("1500534623283-312aade485b7"),
-    alt: "Coastal cliffs meeting open water",
-    caption: "Late light on the headland, shot from the cliff path.",
+    alt: "Neural search engine — AI/ML portfolio build",
+    caption: "Semantic search over 10M+ docs — 95.2% recall@10, 87ms p95.",
   },
   {
     id: 1,
     image: UNSPLASH("1519681393784-d120267933ba"),
-    alt: "Mountain range under night sky",
-    caption: "The ridge holds its last colour long after the sun goes.",
+    alt: "LLM fine-tuning platform — AI/ML portfolio build",
+    caption: "LoRA/QLoRA platform for 7B–70B models, one-click vLLM deploy.",
   },
   {
     id: 2,
     image: UNSPLASH("1470252649378-9c29740c9fa8"),
-    alt: "Star field over a dark ridge",
-    caption: "Clear enough that night to read the whole sky at once.",
+    alt: "Multimodal RAG system — AI/ML portfolio build",
+    caption: "Text + image + code retrieval with citations — 40% fewer hallucinations.",
   },
   {
     id: 3,
     image: UNSPLASH("1506905925346-21bda4d32df4"),
-    alt: "Mist settling across a valley",
-    caption: "Mist gathers in the valley before the morning burns it off.",
+    alt: "AI code assistant — AI/ML portfolio build",
+    caption: "Repo-aware generation and refactor, streaming diffs in the IDE.",
   },
   {
     id: 4,
     image: UNSPLASH("1439066615861-d1af74d74000"),
-    alt: "Forest ridge in low cloud",
-    caption: "Cloud sits low on the treeline and refuses to lift.",
+    alt: "MLOps pipeline — AI/ML portfolio build",
+    caption: "GitOps training to canary deploy — 80% faster releases.",
   },
   {
     id: 5,
     image: UNSPLASH("1444927714506-8492d94b4e3d"),
-    alt: "Waves breaking along a shoreline",
-    caption: "The tide works the same stretch of shore all afternoon.",
+    alt: "Edge AI inference — AI/ML portfolio build",
+    caption: "Quantized serving at the edge — sub-10ms on device.",
   },
 ];
 
@@ -149,9 +122,9 @@ const defaultItems: GsapFlipCardItem[] = [
  */
 export default function GsapFlipCard({
   items = defaultItems,
-  title = "GSAP Flip Card",
-  meta = "Hyperiux Vault / GSAP Flip / React",
-  description = "A pile of cards that fans into a hero and a rail. Tap any frame and the two trade places, same nodes, measured and tweened, never re-mounted.",
+  title = "AI/ML Portfolio Gallery",
+  meta = "LLM / RAG / MLOps — AI Builds",
+  description = "A flip-through of AI builds that fans into a hero and a rail. Tap any frame and the two trade places — every card a shipped ML system.",
   backgroundColor = "#e9e9e7",
   textColor = "#111111",
   mutedColor = "#8a8a86",
@@ -178,6 +151,7 @@ export default function GsapFlipCard({
   const [order, setOrder] = useState<number[]>(() => items.map((_, i) => i));
   const [opened, setOpened] = useState(false);
   const [stageWidth, setStageWidth] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<Map<number, HTMLButtonElement>>(new Map());
@@ -207,6 +181,10 @@ export default function GsapFlipCard({
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
+  }, []);
+
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
   const registerCard = useCallback((index: number, node: HTMLButtonElement | null) => {
@@ -412,6 +390,16 @@ export default function GsapFlipCard({
   }, [order, select, close, opened, items.length]);
 
   if (items.length === 0) return null;
+
+  if (!mounted) {
+    return (
+      <div
+        ref={rootRef}
+        className={`hxs-gsap-flip-card relative w-full min-h-svh overflow-hidden ${className}`}
+        style={{ background: backgroundColor, color: textColor }}
+      />
+    );
+  }
 
   const heroItemIndex = order[0];
   const heroItem = items[heroItemIndex];

@@ -26,7 +26,7 @@ export function AboutSection() {
           <span className="text-foreground">[ About ]</span>
           <span>Gayatri Samal</span>
           <span className="h-px flex-1 bg-line ml-2" />
-          <span className="hidden sm:inline">AI Engineer • Researcher • Builder</span>
+          <span className="hidden sm:inline">AI/ML Portfolio • Engineer • Researcher</span>
         </div>
 
         <div className="grid grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -41,7 +41,7 @@ export function AboutSection() {
             <div className="relative overflow-hidden rounded-[2rem] bg-card border border-line p-3">
               <div className="relative overflow-hidden rounded-[1.5rem] aspect-[4/5] bg-muted">
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80"
+                  src="/images/profile/image.png"
                   alt="Gayatri Samal"
                   className="h-full w-full object-cover"
                 />

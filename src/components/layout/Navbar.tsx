@@ -61,7 +61,7 @@ export function Navbar() {
             <span className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-sm font-bold tracking-tight">GS</span>
             <span className="hidden sm:flex flex-col leading-none">
               <span className="font-display font-semibold text-sm tracking-tight">Gayatri Samal</span>
-              <span className="mono-label text-[9px] opacity-60 -mt-0.5">AI ENGINEER / RESEARCHER</span>
+              <span className="mono-label text-[9px] opacity-60 -mt-0.5">AI/ML PORTFOLIO</span>
             </span>
             <span className="sm:hidden font-display font-semibold text-sm">GS</span>
           </a>

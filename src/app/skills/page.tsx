@@ -131,7 +131,7 @@ export default function SkillsPage() {
           </div>
       </div>
 
-      <div className="container-custom py-6 text-center mono-label text-muted-foreground">Skills left · Certs right · editable</div>
+      <div className="container-custom py-6 text-center mono-label text-muted-foreground">AI/ML skills left · Certs right · from this AI/ML portfolio</div>
     </div>
   );
 }

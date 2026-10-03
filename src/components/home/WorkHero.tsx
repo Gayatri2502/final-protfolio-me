@@ -19,13 +19,13 @@ export function WorkHero() {
         <div className="flex flex-col items-center">
           <div className="w-full max-w-5xl">
             <div className="flex items-center justify-between mono-label text-[#F2F0EB]/50 pt-6">
-              <span>2020 — 2026 • 16 projects</span>
+              <span>2020 — 2026 • 16 AI/ML builds</span>
               <span className="hidden sm:inline">Click folder to open • Drag card down to close</span>
             </div>
 
             <InteractiveFolderGallery
-              folderName="GAYATRI_WORK.gallery"
-              dragHintText="Drag any project down to close — hover folder to peek"
+              folderName="GAYATRI_AI_PORTFOLIO.gallery"
+              dragHintText="Drag any AI build down to close — hover folder to peek"
               className="py-8 lg:py-12"
             />
           </div>

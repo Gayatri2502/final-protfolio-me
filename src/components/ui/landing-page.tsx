@@ -358,10 +358,10 @@ export default function GlobeScrollDemo() {
   const demoSections = [
     {
       id: "hero",
-      badge: "Welcome",
+      badge: "AI/ML Portfolio",
       title: "Explore",
-      subtitle: "Our World",
-      description: "Journey through an immersive experience where technology meets innovation. Watch as perspectives shift and possibilities unfold with every interaction, creating a symphony of digital artistry.",
+      subtitle: "The AI World",
+      description: "Journey through this AI/ML portfolio where machine learning meets production. Watch as models shift from notebook to deployment with every scroll.",
       align: "left" as const,
       actions: [
         { label: "Begin Journey", variant: "primary" as const, onClick: () => console.log("Get started clicked") },
@@ -370,33 +370,33 @@ export default function GlobeScrollDemo() {
     },
     {
       id: "innovation",
-      badge: "Innovation",
-      title: "Connected Worldwide",
-      description: "From every corner of the globe, we witness the interconnected web of human achievement. Each connection represents progress, every interaction drives innovation forward into uncharted territories.",
+      badge: "Machine Learning",
+      title: "Models Serving Worldwide",
+      description: "From every corner of the globe, ML systems serve predictions — semantic search, LLM agents, and RAG pipelines running in production.",
       align: "center" as const,
     },
     {
       id: "discovery",
-      badge: "Discovery",
+      badge: "Deep Learning",
       title: "Expanding",
-      subtitle: "Possibilities",
-      description: "As we push beyond familiar boundaries, new worlds of opportunity emerge from the horizon. What seemed impossible yesterday becomes tomorrow's foundation for extraordinary achievements.",
+      subtitle: "Model Capabilities",
+      description: "As we push beyond familiar benchmarks, new model capabilities emerge. What seemed impossible yesterday becomes tomorrow's baseline.",
       align: "left" as const,
       features: [
-        { title: "Limitless Exploration", description: "Discover new dimensions of possibility and innovation" },
-        { title: "Seamless Integration", description: "Where cutting-edge technology meets human intuition" },
-        { title: "Future-Ready Solutions", description: "Built for tomorrow's challenges and opportunities" }
+        { title: "Retrieval That Grounds", description: "RAG pipelines that cite sources and cut hallucinations" },
+        { title: "Fine-tunes That Stick", description: "LoRA/QLoRA adapters evaluated before they ship" },
+        { title: "Infra That Scales", description: "MLOps built for tomorrow's traffic and models" }
       ]
     },
     {
       id: "future",
-      badge: "Future",
+      badge: "AI Future",
       title: "Our Shared",
-      subtitle: "Tomorrow",
-      description: "In this moment of unity, we see not just a planet, but a canvas of infinite human potential. Every connection represents hope, every innovation builds bridges to our collective future of endless possibilities.",
+      subtitle: "Model Portfolio",
+      description: "In this AI/ML portfolio you see not just projects, but production ML systems — every model evaluated, every pipeline monitored.",
       align: "center" as const,
       actions: [
-        { label: "Join the Movement", variant: "primary" as const, onClick: () => console.log("Join clicked") },
+        { label: "Start an AI Project", variant: "primary" as const, onClick: () => console.log("Join clicked") },
         { label: "Explore More", variant: "secondary" as const, onClick: () => console.log("Explore clicked") }
       ]
     }

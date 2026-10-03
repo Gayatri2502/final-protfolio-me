@@ -27,16 +27,16 @@ export function CardsSliderSection() {
       <div className="container-custom py-8">
         <div className="flex items-center gap-4 mono-label text-[#F2F0EB]/60 border-b border-[#F2F0EB]/10 pb-6">
           <span className="text-[#D4FF32]">[03]</span>
-          <span>Selected Work</span>
+          <span>Selected AI Work</span>
           <span className="h-px flex-1 bg-[#F2F0EB]/10 ml-2" />
-          <span className="hidden sm:inline">Scroll to rotate — GSAP + ScrollTrigger</span>
+          <span className="hidden sm:inline">Scroll to rotate — AI/ML builds</span>
         </div>
         <div className="pt-4 flex items-end justify-between gap-6">
           <h2 className="font-display text-2xl lg:text-3xl font-semibold tracking-[-0.03em] leading-none text-[#F2F0EB]">
-            Work that <span className="italic font-light text-[#F2F0EB]/60">moves</span>
+            AI work that <span className="italic font-light text-[#F2F0EB]/60">moves</span>
           </h2>
           <p className="hidden lg:block max-w-[360px] text-xs leading-5 text-[#F2F0EB]/50 font-mono">
-            Horizontal pinned scroll — cards rotate in 3D as you scroll. Hover-free, reduced-motion aware.
+            Horizontal pinned scroll through this AI/ML portfolio — LLM, RAG, and MLOps builds in 3D as you scroll.
           </p>
         </div>
       </div>

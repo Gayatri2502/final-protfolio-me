@@ -48,9 +48,9 @@ export function TravelGallerySection() {
       <div className="container-custom py-10 lg:py-14">
         <div className="flex items-center gap-4 mono-label text-[#0A0A0A]/60 border-b border-[#0A0A0A]/10 pb-6">
           <span className="text-[#0A0A0A]">[04]</span>
-          <span>Travelling</span>
+          <span>Beyond the models</span>
           <span className="h-px flex-1 bg-[#0A0A0A]/10 ml-2" />
-          <span className="hidden sm:inline">Flip to explore — hobbies beyond code</span>
+          <span className="hidden sm:inline">Flip to explore — the human behind this AI/ML portfolio</span>
         </div>
 
         <div className="mt-8 grid grid-cols-12 gap-8 items-start">
@@ -62,7 +62,7 @@ export function TravelGallerySection() {
               <span className="font-light italic tracking-[-0.03em] text-[#0A0A0A]/60">to wonder.</span>
             </h2>
             <p className="mt-4 max-w-[360px] text-sm leading-6 text-[#0A0A0A]/60">
-              Travelling is my debugging ritual — new streets, new constraints. These are field notes, not postcards.
+              Travelling is my debugging ritual — new streets, new constraints. Time off makes better AI systems. These are field notes, not postcards.
               <span className="text-[#0A0A0A] font-medium"> Hover / tap to flip.</span>
             </p>
 
@@ -70,18 +70,18 @@ export function TravelGallerySection() {
               <Plane className="size-3.5" /> 6 places • 18k km • always economy
             </div>
             <div className="mt-3 flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase text-[#0A0A0A]/40">
-              <MapPin className="size-3" /> flip gallery — minhxthanh style
+              <MapPin className="size-3" /> flip gallery — field notes
               <Compass className="size-3" />
             </div>
 
             <div className="mt-8 hidden lg:block rounded-2xl border border-[#0A0A0A]/10 bg-white p-5">
-              <div className="font-mono text-[10px] tracking-[0.14em] uppercase opacity-60">Why this gallery at right?</div>
+              <div className="font-mono text-[10px] tracking-[0.14em] uppercase opacity-60">Why travel in an AI/ML portfolio?</div>
               <p className="mt-2 text-sm leading-6 text-[#0A0A0A]/70">
-                Keeps copy scannable while the right side stays playful — 3D flip on hover, tap on mobile. Same `flip-gallery` from 21st.dev.
+                New streets, new constraints — the same curiosity that trains better models. 3D flip on hover, tap on mobile.
               </p>
               <div className="mt-4 h-px bg-[#0A0A0A]/10" />
               <div className="mono-label mt-3 flex items-center gap-2 opacity-60">
-                <span className="size-1.5 rounded-full bg-emerald-500" /> npx shadcn add https://21st.dev/r/minhxthanh/flip-gallery
+                <span className="size-1.5 rounded-full bg-emerald-500" /> rest sharpens the models
               </div>
             </div>
           </div>

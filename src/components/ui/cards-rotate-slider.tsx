@@ -3,11 +3,7 @@
 import { forwardRef, useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-function prefersReducedMotion() {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
-}
+import { prefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const REDUCED_PERSPECTIVE = "4800px";
 

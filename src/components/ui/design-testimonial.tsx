@@ -7,22 +7,22 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 
 const testimonials = [
   {
-    quote: "Transformed our entire creative process overnight.",
+    quote: "Her RAG system transformed our entire support workflow overnight.",
     author: "Sarah Chen",
-    role: "Design Director",
-    company: "Linear",
+    role: "Head of AI",
+    company: "TechCorp AI",
   },
   {
-    quote: "The most elegant solution we've ever implemented.",
+    quote: "The most elegant LLM platform we've ever deployed to production.",
     author: "Marcus Webb",
-    role: "Creative Lead",
-    company: "Vercel",
+    role: "ML Lead",
+    company: "Neural Labs",
   },
   {
-    quote: "Pure craftsmanship in every single detail.",
+    quote: "Pure ML craftsmanship in every single detail of this AI/ML portfolio.",
     author: "Elena Frost",
-    role: "Head of Product",
-    company: "Stripe",
+    role: "CTO",
+    company: "DataFlow",
   },
 ]
 

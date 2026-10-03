@@ -8,40 +8,40 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const slides = [
   [
-    { role: "Computer Vision Engineer", count: "2.6K+ Jobs" },
-    { role: "AI Research Scientist", count: "1.8K+ Jobs" },
-    { role: "Machine Learning Engineer", count: "3.2K+ Jobs" },
-    { role: "Deep Learning Specialist", count: "2.1K+ Jobs" },
-    { role: "Data Scientist", count: "1.5K+ Jobs" },
-    { role: "NLP Engineer", count: "1.2K+ Jobs" },
-    { role: "Robotics Engineer", count: "800+ Jobs" },
-    { role: "Autonomous Vehicle Engineer", count: "1.4K+ Jobs" },
-    { role: "AI Product Manager", count: "950+ Jobs" },
-    { role: "Augmented Reality Developer", count: "1.1K+ Jobs" },
+    { role: "RAG Systems", count: "2–4 week builds" },
+    { role: "LLM Fine-tuning", count: "LoRA / QLoRA" },
+    { role: "AI Agents", count: "Guardrailed tools" },
+    { role: "Vector Search", count: "10M+ docs" },
+    { role: "Model Evals", count: "Grounded metrics" },
+    { role: "Prompt Systems", count: "Versioned & tested" },
+    { role: "Chatbots", count: "Cited answers" },
+    { role: "Doc Intelligence", count: "OCR + extract" },
+    { role: "AI Prototypes", count: "Days, not months" },
+    { role: "AI Audits", count: "Find the leaks" },
   ],
   [
-    { role: "AI Researcher", count: "1.1K+ Jobs" },
-    { role: "Vision Systems Developer", count: "750+ Jobs" },
-    { role: "Predictive Analytics Specialist", count: "1.3K+ Jobs" },
-    { role: "Generative AI Engineer", count: "2.0K+ Jobs" },
-    { role: "AI Consultant", count: "1.7K+ Jobs" },
-    { role: "Healthcare AI Specialist", count: "900+ Jobs" },
-    { role: "Edge AI Developer", count: "1.4K+ Jobs" },
-    { role: "3D Reconstruction Engineer", count: "850+ Jobs" },
-    { role: "Face Recognition Expert", count: "600+ Jobs" },
-    { role: "AI Solutions Architect", count: "1.9K+ Jobs" },
+    { role: "MLOps Pipelines", count: "Train → deploy" },
+    { role: "Model Serving", count: "vLLM · Triton" },
+    { role: "Edge Inference", count: "Sub-10ms" },
+    { role: "Quantization", count: "4-bit · 8-bit" },
+    { role: "Monitoring", count: "Drift & quality" },
+    { role: "Healthcare AI", count: "HIPAA-aware" },
+    { role: "Fraud Models", count: "Real-time score" },
+    { role: "Recommendations", count: "Personalization" },
+    { role: "Forecasting", count: "Demand · churn" },
+    { role: "AI Roadmaps", count: "Sequenced by ROI" },
   ],
   [
-    { role: "Speech Recognition Engineer", count: "1.0K+ Jobs" },
-    { role: "AI Ethics Specialist", count: "500+ Jobs" },
-    { role: "AI Trainer", count: "1.3K+ Jobs" },
-    { role: "Computer Vision Analyst", count: "1.2K+ Jobs" },
-    { role: "Video Analytics Specialist", count: "800+ Jobs" },
-    { role: "AI Operations Manager", count: "700+ Jobs" },
-    { role: "Image Processing Engineer", count: "900+ Jobs" },
-    { role: "CV Algorithm Developer", count: "1.6K+ Jobs" },
-    { role: "AI Hardware Engineer", count: "600+ Jobs" },
-    { role: "AI Chatbot Developer", count: "1.2K+ Jobs" },
+    { role: "Data Pipelines", count: "Batch + stream" },
+    { role: "Lakehouse Setup", count: "Delta · Iceberg" },
+    { role: "Feature Stores", count: "Train/serve parity" },
+    { role: "BI Dashboards", count: "KPIs that match" },
+    { role: "Data Quality", count: "Tests & contracts" },
+    { role: "ML Platforms", count: "Internal tooling" },
+    { role: "Team Training", count: "Workshops" },
+    { role: "Advisory Retainer", count: "Monthly" },
+    { role: "Build Sprints", count: "2-week blocks" },
+    { role: "Full-time Embed", count: "Join your team" },
   ],
 ]
 
@@ -68,16 +68,16 @@ export default function JobSlider() {
       <div className="w-full md:w-2/5 text-left space-y-4">
         <Image
           src="https://cdn.21st.dev/assets/mirror/63/633172958fbafeb8ecfd70d783e2a37d002439c088458abd29061ba84389f0b6.png"
-          alt="Discover Jobs"
+          alt="Explore AI/ML services"
           width={300}
           height={300}
           className="rounded-xl mx-auto md:mx-0"
         />
         <h2 className="text-3xl md:text-5xl font-semibold text-gray-800 dark:text-gray-100">
-          Discover jobs across popular roles
+          Explore AI/ML services for every stage
         </h2>
         <p className="text-gray-600 dark:text-gray-400">
-          Select a role and we’ll show you relevant jobs for it!
+          Pick a service to start your AI build — from prototype to production ML.
         </p>
       </div>
 

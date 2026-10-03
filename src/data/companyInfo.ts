@@ -15,8 +15,8 @@ export interface CompanyInfo {
 
 export const companyInfo: CompanyInfo = {
   name: "Gayatri Samal",
-  tagline: "AI Engineer & Researcher",
-  description: "Building intelligent systems that understand, reason, and create. Specializing in LLMs, RAG systems, and production ML infrastructure.",
+  tagline: "AI/ML Portfolio — AI Engineer & Researcher",
+  description: "Welcome to my AI/ML portfolio — building intelligent systems that understand, reason, and create. Specializing in LLMs, RAG systems, and production ML infrastructure.",
   email: "hello@alphacentauric.dev",
   social: {
     github: "https://github.com/alphacentauric",

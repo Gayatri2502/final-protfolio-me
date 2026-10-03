@@ -85,13 +85,13 @@ export function CTA() {
           {/* left — headline + interactive */}
           <div className="col-span-12 lg:col-span-7">
             <h2 className="font-display text-[clamp(2.4rem,5.8vw,4.4rem)] font-semibold tracking-[-0.04em] leading-[0.88]">
-              Have an idea
+              Have an AI idea
               <br />
               <span className="italic font-light text-muted-foreground">worth shipping?</span>
             </h2>
 
             <p className="mt-3 text-sm leading-5 text-muted-foreground">
-              No forms. No spam.
+              No forms. No spam. Just AI/ML builds for this portfolio&apos;s next chapter.
             </p>
 
             {/* — INTERACTIVE: drag-to-copy pill — unique, not a card */}

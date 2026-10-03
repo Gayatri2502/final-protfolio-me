@@ -14,7 +14,7 @@ export function ServicesSection() {
           <span className="text-primary">[03]</span>
           <span>Services</span>
           <span className="h-px flex-1 bg-border ml-2" />
-          <span className="hidden sm:inline">What I do for teams</span>
+          <span className="hidden sm:inline">AI/ML services for teams</span>
         </div>
       </div>
 
@@ -25,7 +25,7 @@ export function ServicesSection() {
 
       <div className="container-custom pb-8">
         <p className="text-center mono-label text-muted-foreground">
-          Services are productized as <span className="text-foreground">Build Sprint (2 weeks) • Advisory (monthly) • Full-time</span> — pick the mode that fits your stage.
+          AI/ML services are productized as <span className="text-foreground">Build Sprint (2 weeks) • Advisory (monthly) • Full-time</span> — pick the mode that fits your stage.
         </p>
       </div>
     </section>
