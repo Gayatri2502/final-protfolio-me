@@ -56,7 +56,7 @@ export function NotchLeftWing({
       fill="none"
       shapeRendering="geometricPrecision"
       className={cn(
-        "pointer-events-none absolute right-full size-2.5 md:size-4 overflow-visible select-none text-zinc-950 transition-colors duration-200 dark:text-zinc-200",
+        "pointer-events-none absolute right-full size-2.5 md:size-4 overflow-visible select-none text-background transition-colors duration-200 dark:text-zinc-200",
         isBottom ? "bottom-0" : "top-0",
         className
       )}
@@ -88,7 +88,7 @@ export function NotchRightWing({
       fill="none"
       shapeRendering="geometricPrecision"
       className={cn(
-        "pointer-events-none absolute left-full size-2.5 md:size-4 overflow-visible select-none text-zinc-950 transition-colors duration-200 dark:text-zinc-200",
+        "pointer-events-none absolute left-full size-2.5 md:size-4 overflow-visible select-none text-background transition-colors duration-200 dark:text-zinc-200",
         isBottom ? "bottom-0" : "top-0",
         className
       )}
@@ -120,7 +120,7 @@ export function NotchCornerLeftWing({
       fill="none"
       shapeRendering="geometricPrecision"
       className={cn(
-        "pointer-events-none absolute left-0 size-2.5 md:size-4 overflow-visible select-none text-zinc-950 transition-colors duration-200 dark:text-zinc-200",
+        "pointer-events-none absolute left-0 size-2.5 md:size-4 overflow-visible select-none text-background transition-colors duration-200 dark:text-zinc-200",
         isBottom ? "bottom-full" : "top-full",
         className
       )}
@@ -152,7 +152,7 @@ export function NotchCornerRightWing({
       fill="none"
       shapeRendering="geometricPrecision"
       className={cn(
-        "pointer-events-none absolute right-0 size-2.5 md:size-4 overflow-visible select-none text-zinc-950 transition-colors duration-200 dark:text-zinc-200",
+        "pointer-events-none absolute right-0 size-2.5 md:size-4 overflow-visible select-none text-background transition-colors duration-200 dark:text-zinc-200",
         isBottom ? "bottom-full" : "top-full",
         className
       )}
@@ -432,7 +432,7 @@ export function NotchNav({
           aria-hidden="true"
           onClick={handleCloseDropdown}
           className={cn(
-            "absolute inset-0 z-40 rounded-none md:rounded-2xl transition-opacity duration-200 ease-out xl:hidden",
+            "absolute inset-0 z-40 rounded-none md:rounded-2xl transition-opacity duration-200 ease-out 2xl:hidden",
             isDropdownOpen
               ? "pointer-events-auto bg-background/20 backdrop-blur-[2px] opacity-100 dark:bg-black/40"
               : "pointer-events-none opacity-0"
@@ -444,7 +444,7 @@ export function NotchNav({
           <aside
             aria-label="Brand logo notch"
             className={cn(
-              "hidden xl:flex absolute left-0 z-50 h-10 px-5 select-none transition-colors duration-200 bg-background dark:bg-zinc-200 dark:text-zinc-950",
+              "hidden 2xl:flex absolute left-0 z-50 h-10 px-5 select-none transition-colors duration-200 bg-background dark:bg-zinc-200 dark:text-zinc-950",
               isBottom
                 ? "bottom-0 rounded-tr-[24px] md:items-end"
                 : "top-0 rounded-br-[24px] md:items-baseline"
@@ -465,7 +465,7 @@ export function NotchNav({
           role="tablist"
           aria-orientation="horizontal"
           className={cn(
-            "hidden xl:flex absolute left-1/2 -translate-x-1/2 z-50 h-11 px-4 bg-background text-zinc-50 select-none transition-colors duration-200 dark:bg-zinc-200 dark:text-zinc-950",
+            "hidden 2xl:flex absolute left-1/2 -translate-x-1/2 z-50 h-11 px-4 bg-background text-zinc-50 select-none transition-colors duration-200 dark:bg-zinc-200 dark:text-zinc-950",
             isBottom
               ? "bottom-0 rounded-t-[24px] md:items-end"
               : "top-0 rounded-b-[24px] md:items-start"
@@ -498,7 +498,7 @@ export function NotchNav({
           <aside
             aria-label="User actions notch"
             className={cn(
-              "hidden xl:flex absolute right-0 z-50 h-10 px-5 select-none transition-colors duration-200 bg-background dark:bg-zinc-200 dark:text-zinc-950",
+              "hidden 2xl:flex absolute right-0 z-50 h-10 px-5 select-none transition-colors duration-200 bg-background dark:bg-zinc-200 dark:text-zinc-950",
               isBottom
                 ? "bottom-0 rounded-tl-[24px] md:items-end"
                 : "top-0 rounded-bl-[24px] md:items-start"
@@ -520,7 +520,7 @@ export function NotchNav({
         <div
           ref={containerRef}
           className={cn(
-            "xl:hidden absolute z-50 flex flex-col bg-background text-zinc-50 select-none transition-colors duration-200 dark:bg-zinc-200 dark:text-zinc-950",
+            "2xl:hidden absolute z-50 flex flex-col bg-background text-zinc-50 select-none transition-colors duration-200 dark:bg-zinc-200 dark:text-zinc-950",
             "w-auto left-1/2 -translate-x-1/2 px-4",
             isBottom
               ? "bottom-0 rounded-t-[24px]"

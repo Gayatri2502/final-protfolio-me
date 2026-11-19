@@ -15,8 +15,8 @@ export interface ServiceItem {
 interface StudiovaServicesTabsProps {
   tagNumber?: string;
   tagLabel?: string;
-  heading?: string;
-  subheading?: string;
+  heading?: React.ReactNode;
+  subheading?: React.ReactNode;
   services?: ServiceItem[];
   brandLink?: string;
   className?: string;
@@ -152,6 +152,10 @@ export function StudiovaServicesTabs({
               return (
                 <div
                   key={item.id}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isActive}
+                  onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setActiveTab(item.id); } }}
                   onClick={() => setActiveTab(item.id)}
                   className={`cursor-pointer rounded-2xl p-6 transition-all duration-300 border ${
                     isActive
@@ -236,7 +240,7 @@ export function StudiovaServicesTabs({
                   Service Specification
                 </span>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-zinc-300">
-                  {activeService.number} / 05
+                  {activeService.number} / {String(services.length).padStart(2, "0")}
                 </span>
               </div>
 

@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { companyInfo } from "@/data/companyInfo";
 
 export function Hero() {
+  const [greetingOpen, setGreetingOpen] = useState(false);
+
   return (
     <section aria-label="Hero" className="relative overflow-hidden text-[#F2F0EB] border-b border-[#F2F0EB]/10">
 
@@ -18,16 +21,16 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="font-mono text-[12px] tracking-[0.14em] uppercase opacity-60 text-[#F2F0EB]">Hey. I&apos;m Gayatri — welcome to my AI/ML portfolio,</p>
+            <p className="font-mono text-[12px] tracking-[0.14em] uppercase opacity-60 text-[#F2F0EB]">Hey. I&apos;m Gayatri — building Alphacentauric Studio,</p>
 
             <h1 className="mt-3 font-display font-bold leading-[0.88] tracking-[-0.04em] text-[#F2F0EB]">
-              <span className="block text-[clamp(2.4rem,6vw,4.2rem)]">AN AI/ML</span>
-              <span className="block text-[clamp(2.4rem,6vw,4.2rem)] font-light italic tracking-[-0.03em] text-[#F2F0EB]/70">& Systems</span>
-              <span className="block text-[clamp(2.4rem,6vw,4.2rem)]">PORTFOLIO</span>
+              <span className="block text-[clamp(2.4rem,6vw,4.2rem)]">BUILDING</span>
+              <span className="block text-[clamp(2.4rem,6vw,4.2rem)] font-light tracking-[-0.03em] text-[#F2F0EB]/70">Alphacentauric</span>
+              <span className="block text-[clamp(2.4rem,6vw,4.2rem)]">STUDIO</span>
             </h1>
 
             <p className="mt-5 max-w-[360px] text-[13.5px] leading-6 text-[#F2F0EB]/60">
-              Transforming ideas into intelligent systems — AI, LLMs and production infrastructure that captivates, scales, and delivers results. Explore the AI/ML work below.
+              Building intelligent experiences with AI, thoughtful design, and systems made to scale. Explore the work behind Alphacentauric Studio below.
             </p>
 
             <a
@@ -48,12 +51,24 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img
-              src="/images/profile/image.png"
-                alt="Gayatri Samal — AI/ML Portfolio"
-              className="w-[320px] sm:w-[380px] lg:w-[380px] xl:w-[400px] h-[420px] sm:h-[480px] lg:h-[520px] object-cover object-top mx-auto"
-              loading="eager"
-            />
+            <button
+              type="button"
+              aria-label="Say hello to the Alphacentauric Studio penguin"
+              aria-expanded={greetingOpen}
+              onClick={() => setGreetingOpen((open) => !open)}
+              className="group relative mx-auto block rounded-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F2F0EB]"
+            >
+              <span className={`pointer-events-none absolute right-0 top-4 z-10 max-w-[190px] rounded-[28px] bg-[#F2F0EB] px-5 py-3 text-left text-sm font-medium leading-snug text-[#08080A] shadow-lg transition-all duration-300 motion-reduce:transition-none group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:scale-100 group-focus-visible:opacity-100 ${greetingOpen ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-95 opacity-0"}`}>
+                Hello! You landed in the right space. ✨
+                <span className="absolute -bottom-1 left-7 size-3 rotate-45 bg-[#F2F0EB]" />
+              </span>
+              <img
+                src="/images/penguin.png"
+                alt="Penguin character representing Alphacentauric Studio"
+                className="w-[320px] sm:w-[380px] lg:w-[380px] xl:w-[400px] h-[420px] sm:h-[480px] lg:h-[520px] object-contain object-center transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+                loading="eager"
+              />
+            </button>
           </motion.div>
 
           {/* RIGHT stats */}

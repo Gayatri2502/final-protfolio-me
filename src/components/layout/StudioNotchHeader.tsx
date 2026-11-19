@@ -70,16 +70,16 @@ export function StudioNotchHeader({ children }: { children: React.ReactNode }) {
       </span>
       <a
         href={companyInfo.social.email}
-        className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-zinc-800 dark:bg-zinc-900 border border-zinc-700 dark:border-zinc-300 px-3 py-1.5 text-xs font-medium text-zinc-200 dark:text-zinc-900 hover:bg-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-100 transition-colors"
+        className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-zinc-800 dark:bg-zinc-900 border border-zinc-700 dark:border-zinc-300 px-3 py-1.5 text-xs font-medium text-zinc-200 dark:text-zinc-100 hover:bg-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-100 transition-colors"
       >
         <Mail className="size-3.5" />
-        <span className="hidden lg:inline">Hire me</span>
+        <span className="hidden lg:inline">Contact us</span>
         <ArrowUpRight className="size-3 hidden lg:block opacity-60" />
       </a>
       <a
         href={companyInfo.social.email}
-        className="sm:hidden flex size-7 items-center justify-center rounded-full bg-zinc-800 dark:bg-zinc-900 text-zinc-200 dark:text-zinc-900"
-        aria-label="Hire me"
+        className="sm:hidden flex size-7 items-center justify-center rounded-full bg-zinc-800 dark:bg-zinc-900 text-zinc-200 dark:text-zinc-100"
+        aria-label="Contact us"
       >
         <Mail className="size-3.5" />
       </a>
