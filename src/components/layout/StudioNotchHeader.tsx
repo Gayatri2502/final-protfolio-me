@@ -9,7 +9,7 @@ import { companyInfo } from "@/data/companyInfo";
 const STUDIO_ITEMS: (NotchItemData & { href: string })[] = [
   { id: "home", label: "Home", icon: Sparkles, href: "/" },
   { id: "about", label: "About", icon: User, href: "/about-new" },
-  { id: "work", label: "Work", icon: Briefcase, href: "/projects" },
+  { id: "work", label: "Projects", icon: Briefcase, href: "/projects" },
   { id: "experience", label: "Experience", icon: Layers, href: "/experience" },
   { id: "skills", label: "Skills", icon: Cpu, href: "/skills" },
   { id: "service", label: "Service", icon: Wrench, href: "/services" },
