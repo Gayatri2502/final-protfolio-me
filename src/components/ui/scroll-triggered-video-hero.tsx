@@ -1,8 +1,8 @@
 'use client';
 
-import { cn } from "@/lib/utils";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useSpring, AnimatePresence, type MotionValue } from 'framer-motion';
 import { ChevronRight, PlayCircle } from 'lucide-react';
 
 // --- Types & Data ---
@@ -10,8 +10,7 @@ interface Reason {
   id: string;
   title: string;
   subtitle: string;
-  videoUrl: string;
-  theme: 'light' | 'dark';
+  scene: string;
   description: string;
 }
 
@@ -20,24 +19,21 @@ const chapters: Reason[] = [
     id: '1',
     title: 'Move Faster',
     subtitle: 'Move Faster Than Competitors',
-    videoUrl: 'https://ik.imagekit.io/kqmrslzuq/Videos/1.mp4',
-    theme: 'dark',
+    scene: 'move-faster',
     description: 'Your competitors are already integrating AI. Staying outdated is always an option, though.',
   },
   {
     id: '2',
     title: 'Scale Faster',
     subtitle: 'Scale Faster & Save Time',
-    videoUrl: 'https://cdn.21st.dev/assets/mirror/13/130f3cb22e97770a1e0a2c66893bf5b63a1c21fd47598839a04d3af34c9da165.mp4',
-    theme: 'dark',
+    scene: 'scale-faster',
     description: 'Modern businesses scale with systems. You could keep using outdated workflows or build smarter ones that actually work.',
   },
   {
     id: '3',
     title: 'Automate Routine Work',
     subtitle: 'Automate the Repetitive Work',
-    videoUrl: 'https://cdn.21st.dev/assets/mirror/5d/5d00d3f51a1f753bb8f106955b9e116d86e82f34b173166ee79275ab10e670b1.mp4',
-    theme: 'light',
+    scene: 'automate-work',
     description: 'Because manually doing everything in 2026 sounds exhausting.',
   },
 ];
@@ -82,42 +78,73 @@ const FilmGrain = () => (
   </div>
 );
 
-const VideoBackground = ({ currentChapterIndex }: { currentChapterIndex: number }) => {
+function VideoBackground({ activeIndex, progress }: {
+  activeIndex: number;
+  progress: MotionValue<number>;
+}) {
+  const videos = useRef<(HTMLVideoElement | null)[]>([]);
+  const reducedMotion = usePrefersReducedMotion();
+
+  function seek(video: HTMLVideoElement, index: number, value: number) {
+    if (!Number.isFinite(video.duration)) return;
+    const lastIndex = chapters.length - 1;
+    const start = Math.max(0, (index - 0.5) / lastIndex);
+    const end = Math.min(1, (index + 0.5) / lastIndex);
+    const phase = Math.min(1, Math.max(0, (value - start) / (end - start)));
+    const time = phase * Math.max(0, video.duration - 1 / 24);
+    if (Math.abs(video.currentTime - time) >= 1 / 24) video.currentTime = time;
+  }
+
+  useEffect(() => {
+    if (reducedMotion) return;
+    const update = (value: number) => {
+      const video = videos.current[activeIndex];
+      if (video) seek(video, activeIndex, value);
+    };
+    update(progress.get());
+    return progress.on("change", update);
+  }, [activeIndex, progress, reducedMotion]);
+
   return (
-    <div className="absolute inset-0 h-full w-full overflow-hidden bg-background">
-      {chapters.map((chapter, index) => (
-        <motion.div
-          key={chapter.id}
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: index === currentChapterIndex ? 1 : 0,
-            zIndex: index === currentChapterIndex ? 10 : 0, 
-          }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 h-full w-full"
-        >
-          <video
-            src={chapter.videoUrl}
-            className="h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-        </motion.div>
-      ))}
-      <div className="absolute inset-0 bg-background/40 pointer-events-none z-[11]" />
+    <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-[#090c13]">
+      {chapters.map(({ scene }, index) => {
+        const poster = `/videos/about/${scene}.jpg`;
+        const mediaClass = "h-full w-full object-cover object-[72%_center] md:object-right";
+        return (
+          <div
+            key={scene}
+            className="absolute inset-0 transition-opacity duration-500 ease-out motion-reduce:transition-none"
+            style={{ opacity: index === 0 || index === activeIndex ? 1 : 0 }}
+          >
+            {reducedMotion ? (
+              <img src={poster} alt="" className={mediaClass} />
+            ) : (
+              <video
+                ref={(element) => { videos.current[index] = element; }}
+                className={mediaClass}
+                src={`/videos/about/${scene}.mp4`}
+                poster={poster}
+                preload={index === activeIndex ? "auto" : "metadata"}
+                onLoadedMetadata={({ currentTarget }) => seek(currentTarget, index, progress.get())}
+                muted
+                playsInline
+              />
+            )}
+          </div>
+        );
+      })}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#090c13] from-10% via-[#090c13]/75 via-45% to-[#090c13]/10" />
       <FilmGrain />
     </div>
   );
-};
+}
 
 const DynamicNav = ({
   activeIndex,
   progress
 }: {
   activeIndex: number,
-  progress: any
+  progress: MotionValue<number>
 }) => {
   const smoothProgress = useSpring(progress, { stiffness: 100, damping: 30 });
 
@@ -179,7 +206,7 @@ export default function CinematicScrol() {
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (latest) => {
       const newIndex = Math.min(
-        Math.floor(latest * chapters.length),
+        Math.round(latest * (chapters.length - 1)),
         chapters.length - 1
       );
       setActiveIndex(newIndex);
@@ -191,8 +218,8 @@ export default function CinematicScrol() {
     <section ref={containerRef} className="relative w-full" style={{ height: `${chapters.length * 100}vh` }}>
 
       {/* 1. Background */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden relative">
-        <VideoBackground currentChapterIndex={activeIndex} />
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <VideoBackground activeIndex={activeIndex} progress={scrollYProgress} />
       </div>
 
       {/* 2. Nav */}
@@ -213,7 +240,7 @@ export default function CinematicScrol() {
               className="max-w-4xl pointer-events-auto"
             >
               {chapter.id === "1" && (
-                <p className="mb-5 text-sm font-medium text-white">Why work with Alphacentauric?</p>
+                <p className="mb-6 inline-block rounded-full bg-indigo-200 px-4 py-2 text-sm font-bold text-indigo-950 shadow-lg shadow-indigo-950/40 md:text-base">Why work with Alphacentauric?</p>
               )}
               {/* Header Line */}
               <motion.div variants={fadeIn} className="flex items-center gap-4 mb-6">
