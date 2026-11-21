@@ -2,10 +2,12 @@
 
 import CinematicScrol from "@/components/ui/scroll-triggered-video-hero";
 
-const team = [
-  { name: "Toto", portrait: "Red panda wearing round glasses and a plaid scarf", background: "bg-[#211711]", fit: "object-cover object-top" },
-  { name: "Mimi", portrait: "White fox with blue eyes", background: "bg-[#151d30]", fit: "object-contain p-5" },
-  { name: "Momo", portrait: "Baby penguin with orange feet", background: "bg-[#24243a]", fit: "object-contain p-5" },
+import CurvedLensCarousel, { type LensSlide } from "@/components/ui/3d-curved-carousel";
+
+const team: LensSlide[] = [
+  { title: "Momo", image: "/images/team/Momo.png", alt: "Baby penguin with orange feet", kicker: "Alphacentauric AI agent" },
+  { title: "Toto", image: "/images/team/Toto.png", alt: "Red panda wearing round glasses and a plaid scarf", kicker: "Alphacentauric AI agent" },
+  { title: "Mimi", image: "/images/team/Mimi.png", alt: "White fox with blue eyes", kicker: "Alphacentauric AI agent" },
 ];
 
 export default function AboutNewPage() {
@@ -19,22 +21,14 @@ export default function AboutNewPage() {
             Meet the <span className="text-primary">AI team.</span>
           </h2>
           <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-            Toto, Mimi, and Momo are the three AI agents helping run Alphacentauric.
+            Momo, Toto, and Mimi are the three AI agents helping run Alphacentauric.
           </p>
-          <ul className="mt-10 grid gap-5 sm:grid-cols-3">
-            {team.map(({ name, portrait, background, fit }) => (
-              <li key={name} className="overflow-hidden rounded-2xl border border-border bg-card">
-                <div className={`aspect-[4/5] ${background}`}>
-                  <img src={`/images/team/${name}.png`} alt={portrait} loading="lazy"
-                    className={`h-full w-full ${fit}`} />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-2xl font-semibold">{name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">Alphacentauric AI agent</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <CurvedLensCarousel
+            slides={team}
+            label="Alphacentauric AI team"
+            height="clamp(480px, 75svh, 760px)"
+            className="mt-10 rounded-2xl"
+          />
         </div>
       </section>
     </div>
