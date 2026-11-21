@@ -21,7 +21,7 @@ interface ScrollGlobeProps {
       scale: number;
     }[];
   };
-  scrollVisual?: React.ReactNode;
+  scrollVisual?: (progress: number) => React.ReactNode;
   className?: string;
 }
 
@@ -231,7 +231,7 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, scroll
         }}
       >
         <div className="scale-75 sm:scale-90 lg:scale-100">
-          {scrollVisual ?? <Globe />}
+          {scrollVisual ? scrollVisual(scrollProgress) : <Globe />}
         </div>
       </div>
 

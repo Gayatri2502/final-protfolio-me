@@ -50,12 +50,33 @@ const experienceSections = [
   },
 ];
 
+function MomoTurn({ progress }: { progress: number }) {
+  const turn = Math.sin(progress * Math.PI * 2);
+  const profileOpacity = Math.abs(turn) ** 1.6;
+
+  return (
+    <div aria-hidden="true" className="relative aspect-square w-[clamp(220px,38vw,490px)] [perspective:900px]">
+      <div
+        className="absolute inset-0 motion-reduce:![transform:none]"
+        style={{ transform: `rotateY(${turn * 22}deg) rotateZ(${turn * 4}deg)` }}
+      >
+        <img src="/images/team/Momo.png" alt="" className="absolute inset-0 h-full w-full object-contain"
+          style={{ opacity: 1 - profileOpacity }} />
+        <div className="absolute inset-[2%] overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_76%)]"
+          style={{ opacity: profileOpacity, transform: turn < 0 ? "scaleX(-1)" : undefined }}>
+          <img src="/images/team/momo-profile.png" alt="" className="absolute left-1/2 h-full w-auto max-w-none -translate-x-1/2" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ExperiencePage() {
   return (
     <div className="min-h-screen">
       <ScrollGlobe
         sections={experienceSections}
-        scrollVisual={<img src="/images/team/Momo.png" alt="" className="h-auto w-[clamp(220px,38vw,490px)] object-contain" />}
+        scrollVisual={(progress) => <MomoTurn progress={progress} />}
       />
     </div>
   );
