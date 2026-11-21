@@ -94,18 +94,12 @@ const FRAG =
   "float box(vec2 q,vec2 b,float r){vec2 d=abs(q)-b+r;return length(max(d,0.))+min(max(d.x,d.y),0.)-r;}" +
   "void main(){" +
   "float a=uSize.x/uSize.y;vec2 uv=vUv-.5;" +
-  "if(uAspect>a)uv.x*=a/uAspect;else uv.y*=uAspect/a;" +
-  "uv=uv/1.12+.5;uv.x+=uShift;" +
-  "float ca=(.0012+.0045*vX*vX)*(1.+abs(uVel)*1.2);" +
-  "vec3 c=vec3(texture2D(uTex,uv+vec2(ca,0.)).r,texture2D(uTex,uv).g,texture2D(uTex,uv-vec2(ca,0.)).b);" +
-  "c=mix(vec3(.11,.11,.12),c,uReady);" +
-  "c*=1.-.42*min(1.,vX*vX);" +
-  "float d=box((vUv-.5)*uSize,uSize*.5,14.);" +
-  "float rim=smoothstep(-5.,0.,d);" +
-  "c+=rim*.10;" +
-  "c+=.07*smoothstep(.55,1.,vUv.y)*(1.-abs(vX));" +
-  "float al=smoothstep(.75,-.75,d)*uIntro;" +
-  "gl_FragColor=vec4(c*al,al);}"
+  "if(uAspect>a)uv.y*=uAspect/a;else uv.x*=a/uAspect;" +
+  "uv+=.5;" +
+  "if(any(lessThan(uv,vec2(0.)))||any(greaterThan(uv,vec2(1.))))discard;" +
+  "vec4 portrait=texture2D(uTex,uv);" +
+  "float opacity=uReady*uIntro;" +
+  "gl_FragColor=portrait*opacity;}"
 
 const FONT =
   "@font-face{font-family:CLC Serif;font-style:normal;font-weight:400;font-display:swap;" +
@@ -143,7 +137,7 @@ const CSS =
   ".clc-btn:active{transform:scale(.94)}" +
   ".clc-btn:focus-visible{outline:2px solid var(--clc-ink);outline-offset:3px}" +
   ".clc-btn svg{width:18px;height:18px}" +
-  ".clc-fallback{position:absolute;left:50%;top:50%;width:min(62vw,360px);aspect-ratio:4/5;transform:translate(-50%,-50%);object-fit:cover;border-radius:14px;max-width:none}" +
+  ".clc-fallback{position:absolute;left:50%;top:50%;width:min(62vw,360px);aspect-ratio:4/5;transform:translate(-50%,-50%);object-fit:contain;border-radius:14px;max-width:none}" +
   ".clc-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}" +
   "@media (max-width:640px){.clc-copy{max-width:calc(100% - 40px);bottom:96px}.clc-ctl{flex-direction:row;align-items:center;left:20px;justify-content:space-between}.clc-bar{width:96px}}" +
   "@media (prefers-reduced-motion:reduce){.clc-ch,.clc-cap,.clc-bar>span,.clc-btn{transition:opacity .2s ease}.clc-ch{transform:none}.clc-cap{transform:none}}"
@@ -269,6 +263,7 @@ export default function CurvedLensCarousel({
     for (const k of ["uRes", "uSize", "uX", "uBend", "uVel", "uIntro", "uTex", "uAspect", "uShift", "uReady", "uLift"]) u[k] = gl.getUniformLocation(prog, k)
     gl.enable(gl.BLEND)
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true)
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true)
 
     let disposed = false
@@ -474,7 +469,7 @@ export default function CurvedLensCarousel({
       aria-label={typeof label === "string" ? label : "Photo carousel"}
     >
       <style>{CSS}</style>
-      <div className="clc-glow" aria-hidden="true" />
+      {background !== "transparent" && <div className="clc-glow" aria-hidden="true" />}
       <canvas ref={canvasRef} className="clc-canvas" aria-hidden="true" />
       {noGL ? <img className="clc-fallback" src={slide.image} alt={slide.alt ?? slide.title} /> : null}
       <div className="clc-grain" aria-hidden="true" />

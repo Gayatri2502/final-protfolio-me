@@ -26,6 +26,7 @@ export default function AboutNewPage() {
           <CurvedLensCarousel
             slides={team}
             label="Alphacentauric AI team"
+            background="transparent"
             height="clamp(480px, 75svh, 760px)"
             className="mt-10 rounded-2xl"
           />
