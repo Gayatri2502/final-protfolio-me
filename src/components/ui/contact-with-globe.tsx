@@ -734,7 +734,7 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.0, delay: 0.2, ease: smoothEase }}
-            className="flex flex-col gap-6"
+            className="grid min-w-0 items-center gap-6 min-[600px]:grid-cols-[max-content_minmax(0,1fr)] lg:col-span-2"
           >
             <div className="flex flex-col gap-3">
               {CONTACT_LINKS.map(({ icon: Icon, label, href }, i) => (
@@ -758,7 +758,14 @@ export default function ContactWithGlobe({
                 </motion.a>
               ))}
             </div>
-
+            <img
+              src="/images/team/contact-team.gif"
+              alt="Toto, Mimi, and Momo coming together as a team"
+              width={480}
+              height={270}
+              loading="lazy"
+              className="mx-auto h-auto w-full max-w-[480px] rounded-xl"
+            />
           </motion.div>
 
           <motion.div
@@ -766,7 +773,7 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.0, delay: 0.35, ease: smoothEase }}
-            className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 sm:p-8 flex flex-col gap-5"
+            className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 sm:p-8 flex flex-col gap-5 lg:col-span-2"
           >
             <div>
               <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-0.5">
