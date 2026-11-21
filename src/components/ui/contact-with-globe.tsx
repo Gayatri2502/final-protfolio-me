@@ -26,7 +26,7 @@ const CONTACT_LINKS = [
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    href: "https://wa.me/918956784586?text=Hi%20Gayatri%20—%20saw%20your%20AI%2FML%20studio!",
+    href: `${companyInfo.social.whatsapp}?text=Hi%20Gayatri%20—%20saw%20your%20AI%2FML%20studio!`,
   },
   {
     icon: Linkedin,

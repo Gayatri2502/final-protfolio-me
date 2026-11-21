@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
 export interface ServiceItem {
   id: string;
@@ -10,7 +11,25 @@ export interface ServiceItem {
   description: string;
   deliverables: string[];
   gradient: string;
+  illustration?: string;
   projects?: { name: string; href: string }[];
+}
+
+function ServiceIllustration({ service, className }: { service: ServiceItem; className: string }) {
+  if (!service.illustration) return null;
+
+  return (
+    <div className={`relative mx-auto aspect-[4/3] w-full max-w-md ${className}`}>
+      <Image
+        key={service.illustration}
+        src={service.illustration}
+        alt={`Momo illustrating ${service.title}`}
+        fill
+        unoptimized
+        className="object-contain"
+      />
+    </div>
+  );
 }
 
 interface StudiovaServicesTabsProps {
@@ -204,6 +223,7 @@ export function StudiovaServicesTabs({
                   {/* Expanded Content for Active Tab */}
                   {isActive && (
                     <div className="mt-4 pt-4 border-t border-white/10 animate-fadeIn">
+                      <ServiceIllustration service={item} className="mb-4 lg:hidden" />
                       <p className="text-xs font-medium text-primary mb-2 font-mono">
                         {item.tagline}
                       </p>
@@ -244,6 +264,8 @@ export function StudiovaServicesTabs({
                   {activeService.number} / {String(services.length).padStart(2, "0")}
                 </span>
               </div>
+
+              <ServiceIllustration service={activeService} className="mb-6 hidden lg:block" />
 
               {activeService.projects && (
                 <div className="mb-6 rounded-xl border border-white/10 bg-black/40 p-5">

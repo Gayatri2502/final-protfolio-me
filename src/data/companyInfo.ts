@@ -7,6 +7,7 @@ export interface CompanyInfo {
     github: string;
     linkedin: string;
     twitter: string;
+    whatsapp: string;
     email: string;
   };
   location: string;
@@ -22,6 +23,7 @@ export const companyInfo: CompanyInfo = {
     github: "https://github.com/alphacentauric",
     linkedin: "https://linkedin.com/in/alphacentauric",
     twitter: "https://twitter.com/alphacentauric",
+    whatsapp: "https://wa.me/918956784586",
     email: "mailto:alphacentauric.ai@gmail.com",
   },
   location: "Mumbai, India",
