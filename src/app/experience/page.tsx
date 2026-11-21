@@ -52,20 +52,34 @@ const experienceSections = [
 
 function MomoTurn({ progress }: { progress: number }) {
   const turn = Math.sin(progress * Math.PI * 2);
-  const profileOpacity = Math.abs(turn) ** 1.6;
+  const angle = Math.abs(turn);
+  const profileOpacity = angle * angle * (3 - 2 * angle);
+  const poseClass = "absolute inset-0 h-full w-full object-contain transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none";
 
   return (
     <div aria-hidden="true" className="relative aspect-square w-[clamp(220px,38vw,490px)] [perspective:900px]">
       <div
-        className="absolute inset-0 motion-reduce:![transform:none]"
-        style={{ transform: `rotateY(${turn * 22}deg) rotateZ(${turn * 4}deg)` }}
+        className="absolute inset-0 isolate origin-[center_94%] transition-transform duration-200 ease-out motion-reduce:![transform:none] motion-reduce:transition-none"
+        style={{ transform: `rotateY(${turn * 16}deg) rotateZ(${turn * 2}deg)` }}
       >
-        <img src="/images/team/Momo.png" alt="" className="absolute inset-0 h-full w-full object-contain"
-          style={{ opacity: 1 - profileOpacity }} />
-        <div className="absolute inset-[2%] overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_76%)]"
-          style={{ opacity: profileOpacity, transform: turn < 0 ? "scaleX(-1)" : undefined }}>
-          <img src="/images/team/momo-profile.png" alt="" className="absolute left-1/2 h-full w-auto max-w-none -translate-x-1/2" />
-        </div>
+        <img
+          src="/images/team/Momo.png"
+          alt=""
+          className={`${poseClass} motion-reduce:!opacity-100 motion-reduce:![transform:none]`}
+          style={{ opacity: 1 - profileOpacity, transform: `scaleX(${1 - angle * 0.18})` }}
+        />
+        {[1, -1].map((direction) => (
+          <img
+            key={direction}
+            src="/images/team/momo-profile-transparent.png"
+            alt=""
+            className={`${poseClass} mix-blend-plus-lighter motion-reduce:hidden`}
+            style={{
+              opacity: turn * direction > 0 ? profileOpacity : 0,
+              transform: `scaleX(${direction})`,
+            }}
+          />
+        ))}
       </div>
     </div>
   );
