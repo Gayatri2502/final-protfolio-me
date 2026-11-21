@@ -132,7 +132,7 @@
     "screenshot": null
   },
   {
-    "description": "Solar Sales Desk — distributor quotations, approvals, stock, reports and Arka voice workflow. Private pilot implementation.",
+    "description": "Solar distributor workspace for enquiries, quotations, approvals and orders.",
     "fork": false,
     "homepage": null,
     "html_url": "https://github.com/Gayatri2502/solar-sales-desk",
@@ -141,7 +141,7 @@
     "private": false,
     "updated_at": "2026-11-05T12:44:33Z",
     "lab": false,
-    "screenshot": null
+    "screenshot": "/images/projects/solar-sales.jpg"
   },
   {
     "description": "PhysioFlow Clinic ERP",
@@ -168,7 +168,7 @@
     "screenshot": null
   },
   {
-    "description": null,
+    "description": "Madhav Offset Printers website with interactive packaging showcases and product catalogues.",
     "fork": false,
     "homepage": null,
     "html_url": "https://github.com/Gayatri2502/Madhav",
@@ -177,7 +177,7 @@
     "private": false,
     "updated_at": "2026-10-25T14:20:45Z",
     "lab": false,
-    "screenshot": null
+    "screenshot": "/images/projects/madhav.jpg"
   },
   {
     "description": "Drinkarto consumer knowledge, official state price references and beverage distribution ERP",
@@ -216,7 +216,7 @@
     "screenshot": null
   },
   {
-    "description": null,
+    "description": "Interactive Streamlit modules for learning statistics through business examples.",
     "fork": false,
     "homepage": null,
     "html_url": "https://github.com/Gayatri2502/statistics-playground",
@@ -225,7 +225,7 @@
     "private": false,
     "updated_at": "2026-08-19T18:44:38Z",
     "lab": false,
-    "screenshot": null
+    "screenshot": "/images/projects/statistics.jpg"
   },
   {
     "description": null,
