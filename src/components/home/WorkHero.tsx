@@ -26,7 +26,7 @@ export function WorkHero() {
 
             <InteractiveFolderGallery
               photos={galleryProjects}
-              folderName="ALPHACENTAURIC_STUDIO.gallery"
+              folderName="Studio Web Designs"
               dragHintText="Drag any project card down to close — hover folder to peek"
               className="py-8 lg:py-12"
             />

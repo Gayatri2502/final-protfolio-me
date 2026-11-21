@@ -21,7 +21,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="font-mono text-[12px] tracking-[0.14em] uppercase opacity-60 text-[#F2F0EB]">We help businesses scale through automation and build their digital presence at Alphacentauric Studio.</p>
+            <p className="font-mono text-[12px] tracking-[0.14em] uppercase opacity-60 text-[#F2F0EB]">Helping brands create a digital presence</p>
 
             <h1 className="mt-3 font-display font-bold leading-[0.88] tracking-[-0.04em] text-[#F2F0EB]">
               <span className="block text-[clamp(2.4rem,6vw,4.2rem)]">BUILDING</span>
@@ -93,7 +93,7 @@ export function Hero() {
                 <div className="mt-1 font-mono text-[11px] leading-4 tracking-wide uppercase opacity-60 text-[#F2F0EB]">Model Uptime</div>
               </div>
               <div>
-                <div className="font-display font-bold text-[28px] leading-none tracking-[-0.02em] text-[#F2F0EB]">500+</div>
+                <div className="font-display font-bold text-[28px] leading-none tracking-[-0.02em] text-[#F2F0EB]">9</div>
                 <div className="mt-1 font-mono text-[11px] leading-4 tracking-wide uppercase opacity-60 text-[#F2F0EB]">Engineers Supported</div>
               </div>
             </div>
@@ -103,7 +103,7 @@ export function Hero() {
                 { v: "3+", l: "AI/ML yrs" },
                 { v: "5", l: "AI builds" },
                 { v: "99.9%", l: "Uptime" },
-                { v: "500+", l: "Users" },
+                { v: "9", l: "Engineers supported" },
               ].map((s) => (
                 <div key={s.l} className="text-center">
                   <div className="font-display font-bold text-xl tracking-tight text-[#F2F0EB]">{s.v}</div>

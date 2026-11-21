@@ -7,22 +7,28 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 
 const testimonials = [
   {
-    quote: "Gayatri made the automation setup feel manageable. She explained each step patiently and showed our team how to adjust the workflows ourselves.",
-    author: "Example owner comment",
-    role: "Workflow automation & AI assistants",
-    company: "Automation",
+    quote: "Gayatri helped us map where enquiries were getting stuck and showed us how to use WhatsApp Business for quick replies and follow-ups.",
+    author: "Rhea Mehta",
+    company: "Juniper Box Co.",
+    service: "WhatsApp Business",
   },
   {
-    quote: "The website and booking system came together smoothly. Gayatri walked us through the decisions and taught us how to make updates after launch.",
-    author: "Example owner comment",
-    role: "Web design & SaaS development",
-    company: "Web & SaaS",
+    quote: "Our website finally makes it easy to understand what we sell and request a quote. The design process was smooth, and the handover showed us how to update it ourselves.",
+    author: "Kabir Desai",
+    company: "Cedar Loom Studio",
+    service: "Website Design",
   },
   {
-    quote: "Gayatri took the time to understand our sales and inventory processes. She explained how the CRM, ERP, and reporting fit together so we could use them with confidence.",
-    author: "Example owner comment",
-    role: "ERP, CRM & data analysis",
-    company: "Business systems",
+    quote: "The consulting sessions gave us a clear plan. We learned which stock and purchasing processes to fix before deciding whether we needed an ERP.",
+    author: "Naina Rao",
+    company: "Copper Finch Supply",
+    service: "Business Consultancy & ERP Planning",
+  },
+  {
+    quote: "We used to track leads in three places. The studio helped us set up a CRM pipeline and patiently walked the team through logging enquiries and assigning follow-ups.",
+    author: "Arjun Shah",
+    company: "Marigold Trade Works",
+    service: "CRM Setup",
   },
 ]
 
@@ -95,7 +101,7 @@ export function Testimonial() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              Example client perspectives
+              Client Perspectives
             </motion.span>
 
             {/* Vertical progress line */}
@@ -124,7 +130,7 @@ export function Testimonial() {
               >
                 <span className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground border border-border rounded-full px-3 py-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  {current.company}
+                  {current.service}
                 </span>
               </motion.div>
             </AnimatePresence>
@@ -190,7 +196,7 @@ export function Testimonial() {
                   />
                   <div>
                     <p className="text-base font-medium text-foreground">{current.author}</p>
-                    <p className="text-sm text-muted-foreground">{current.role}</p>
+                    <p className="text-sm text-muted-foreground">Owner, {current.company} · Fictional scenario</p>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -255,7 +261,7 @@ export function Testimonial() {
           </div>
         </div>
 
-        {/* Bottom ticker - subtle repeating company names */}
+        {/* Bottom ticker - subtle repeating service names */}
         <div className="absolute -bottom-20 left-0 right-0 overflow-hidden opacity-[0.08] pointer-events-none">
           <motion.div
             className="flex whitespace-nowrap text-6xl font-bold tracking-tight"
@@ -264,7 +270,7 @@ export function Testimonial() {
           >
             {[...Array(10)].map((_, i) => (
               <span key={i} className="mx-8">
-                {testimonials.map((t) => t.company).join(" • ")} •
+                {testimonials.map((t) => t.service).join(" • ")} •
               </span>
             ))}
           </motion.div>

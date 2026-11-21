@@ -54,11 +54,12 @@ export function FlipBookSection() {
 
         <div className="mt-8 grid grid-cols-12 gap-8 items-center">
           <div className="col-span-12 lg:col-span-5">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-[-0.04em] leading-[0.9] text-[#F2F0EB]">
+            <h2 className="font-display text-xl lg:text-2xl font-bold tracking-tight leading-tight text-[#F2F0EB]">
               Hii, I&apos;m Gayatri Samal
-              <br />
-              <span className="font-light italic tracking-[-0.03em] text-[#F2F0EB]/60">And here&apos;s my assistant, Momo. Together, we&apos;re building this AI space for small business owners.</span>
             </h2>
+            <p className="mt-2 max-w-[420px] text-sm leading-6 text-[#F2F0EB]/70">
+              And here&apos;s my assistant, Momo. Together, we&apos;re building this AI space for small business owners.
+            </p>
             <p className="mt-4 max-w-[420px] text-sm leading-6 text-[#F2F0EB]/60">
               You know that feeling when you&apos;re watching something and suddenly an idea clicks? That&apos;s how Alphacentauric got its name. It became an obsession and a reason to keep pushing myself.
             </p>
