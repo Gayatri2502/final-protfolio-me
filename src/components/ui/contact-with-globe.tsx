@@ -4,7 +4,7 @@ import * as React from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Mail, Phone, Headphones, MessageCircle, Linkedin, Github, Twitter, Instagram, Youtube, Brain, Trophy } from "lucide-react";
+import { ArrowRight, Mail, Phone, MessageCircle, Linkedin, Github, Twitter, Instagram, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { companyInfo } from "@/data/companyInfo";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
@@ -20,19 +20,14 @@ const smoothEase = [0.25, 0.1, 0.25, 1] as const;
 const CONTACT_LINKS = [
   {
     icon: Mail,
-    label: companyInfo.email,
-    href: companyInfo.social.email,
+    label: "alphacentauric.ai@gmail.com",
+    href: "mailto:alphacentauric.ai@gmail.com",
   },
-  { icon: Phone, label: "+1 (415) 555-0139", href: "tel:+14155550139" },
-  {
-    icon: Headphones,
-    label: "AI consulting — hello@alphacentauric.dev",
-    href: "mailto:hello@alphacentauric.dev?subject=AI%20consulting%20inquiry",
-  },
+  { icon: Phone, label: "+91 8956784586", href: "tel:+918956784586" },
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    href: "https://wa.me/14155550139?text=Hi%20Gayatri%20—%20saw%20your%20AI%2FML%20portfolio!",
+    href: "https://wa.me/918956784586?text=Hi%20Gayatri%20—%20saw%20your%20AI%2FML%20portfolio!",
   },
   {
     icon: Linkedin,
@@ -58,16 +53,6 @@ const CONTACT_LINKS = [
     icon: Youtube,
     label: "YouTube",
     href: "https://youtube.com/@alphacentauric",
-  },
-  {
-    icon: Brain,
-    label: "Hugging Face",
-    href: "https://huggingface.co/alphacentauric",
-  },
-  {
-    icon: Trophy,
-    label: "Kaggle",
-    href: "https://kaggle.com/alphacentauric",
   },
 ];
 
@@ -751,16 +736,6 @@ export default function ContactWithGlobe({
             transition={{ duration: 1.0, delay: 0.2, ease: smoothEase }}
             className="flex flex-col gap-6"
           >
-            <div className="flex flex-col gap-1">
-              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">
-                Start an AI project
-              </h3>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-xs">
-                Reach out via any channel below. AI/ML portfolio inquiries
-                typically get a reply within one business day.
-              </p>
-            </div>
-
             <div className="flex flex-col gap-3">
               {CONTACT_LINKS.map(({ icon: Icon, label, href }, i) => (
                 <motion.a
