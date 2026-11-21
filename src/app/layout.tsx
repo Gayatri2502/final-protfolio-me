@@ -26,7 +26,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: {
     default: "Gayatri Samal — AI/ML Studio",
-    template: "%s | Gayatri Samal · AI/ML Studio",
+    template: "%s | Alphacentauric Studio",
   },
   description: "The AI/ML studio of Gayatri Samal — building intelligent systems that understand, reason, and create. Specializing in LLMs, RAG systems, and production ML infrastructure.",
   keywords: ["AI/ML Studio", "AI Engineer", "Machine Learning", "LLM", "RAG", "MLOps", "Python", "React", "Next.js"],

@@ -1,4 +1,4 @@
-"use client";
+import type { Metadata } from "next";
 
 import ScrollingAnimation from "@/components/ui/scrolling-animation";
 
@@ -10,6 +10,8 @@ import { ArrowUpRight, FlaskConical } from "lucide-react";
 import repositories from "@/data/github-repositories.json";
 
 const planned = new Set(["time-series-forecasting-abi", "llm-evaluation-observability", "f1-race-strategy-predictor", "latent-diffusion-imbalanced-classification"]);
+export const metadata: Metadata = { title: "AI Experiments" };
+
 export default function ExperimentsPage() {
   const lab = repositories.filter(repo => repo.lab);
   return (

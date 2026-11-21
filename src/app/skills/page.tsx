@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { Award } from "lucide-react";
 
 const featured = [
@@ -21,6 +23,8 @@ const certifications = [
 function Logo({ name, logo }: { name: string; logo: string | null }) {
   return <span className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06]">{logo ? <img src={`/images/skills/${logo}.svg`} alt="" className="size-6 brightness-0 invert" /> : <span className="font-mono text-[10px] font-bold text-primary">{name === "AWS" ? "AWS" : <Award className="size-5" />}</span>}</span>;
 }
+
+export const metadata: Metadata = { title: "Skills & Certifications" };
 
 export default function SkillsPage() {
   return (

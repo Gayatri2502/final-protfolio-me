@@ -1,4 +1,4 @@
-"use client";
+import type { Metadata } from "next";
 
 import CinematicScrol from "@/components/ui/scroll-triggered-video-hero";
 
@@ -9,6 +9,8 @@ const team: LensSlide[] = [
   { title: "Toto", image: "/images/team/Toto.png", alt: "Red panda wearing round glasses and a plaid scarf", kicker: "Alphacentauric AI agent" },
   { title: "Mimi", image: "/images/team/Mimi.png", alt: "White fox with blue eyes", kicker: "Alphacentauric AI agent" },
 ];
+
+export const metadata: Metadata = { title: "About the Studio" };
 
 export default function AboutNewPage() {
   return (

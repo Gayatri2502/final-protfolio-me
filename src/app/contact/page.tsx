@@ -1,6 +1,8 @@
-"use client";
+import type { Metadata } from "next";
 
 import ContactWithGlobe from "@/components/ui/contact-with-globe";
+
+export const metadata: Metadata = { title: "Contact" };
 
 export default function ContactPage() {
   return (

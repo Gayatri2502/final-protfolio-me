@@ -69,11 +69,12 @@ export function Testimonial() {
   const current = testimonials[activeIndex]
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background overflow-hidden">
+    <section aria-labelledby="client-perspectives-title" className="flex items-center justify-center overflow-hidden bg-background px-5 py-14 sm:px-8 lg:min-h-screen lg:px-0 lg:py-0">
       <div ref={containerRef} className="relative w-full max-w-5xl" onMouseMove={handleMouseMove}>
         {/* Oversized index number - positioned to bleed off left edge */}
         <motion.div
-          className="absolute -left-8 top-1/2 -translate-y-1/2 text-[28rem] font-bold text-foreground/[0.03] select-none pointer-events-none leading-none tracking-tighter"
+          aria-hidden="true"
+          className="absolute hidden lg:block -left-8 top-1/2 -translate-y-1/2 text-[28rem] font-bold text-foreground/[0.03] select-none pointer-events-none leading-none tracking-tighter"
           style={{ x: numberX, y: numberY }}
         >
           <AnimatePresence mode="wait">
@@ -91,21 +92,21 @@ export function Testimonial() {
         </motion.div>
 
         {/* Main content - asymmetric layout */}
-        <div className="relative flex">
+        <div className="relative flex flex-col lg:flex-row">
           {/* Left column - vertical text */}
-          <div className="flex flex-col items-center justify-center pr-16 border-r border-border">
-            <motion.span
-              className="text-xs font-mono text-muted-foreground tracking-widest uppercase"
-              style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
+          <div className="mb-5 flex items-center gap-4 lg:mb-0 lg:flex-col lg:justify-center lg:gap-8 lg:border-r lg:border-border lg:pr-16">
+            <motion.h2
+              id="client-perspectives-title"
+              className="text-xs font-mono text-muted-foreground tracking-widest uppercase lg:[writing-mode:vertical-rl]"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
               Client Perspectives
-            </motion.span>
+            </motion.h2>
 
             {/* Vertical progress line */}
-            <div className="relative h-32 w-px bg-border mt-8">
+            <div aria-hidden="true" className="relative hidden h-32 w-px bg-border lg:block">
               <motion.div
                 className="absolute top-0 left-0 w-full bg-foreground origin-top"
                 animate={{
@@ -117,7 +118,7 @@ export function Testimonial() {
           </div>
 
           {/* Center - main content */}
-          <div className="flex-1 pl-16 py-12">
+          <div className="min-w-0 flex-1 lg:py-12 lg:pl-16">
             {/* Company badge */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -126,7 +127,7 @@ export function Testimonial() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.4 }}
-                className="mb-8"
+                className="mb-5 lg:mb-8"
               >
                 <span className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground border border-border rounded-full px-3 py-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />
@@ -136,19 +137,20 @@ export function Testimonial() {
             </AnimatePresence>
 
             {/* Quote with character reveal */}
-            <div className="relative mb-12 min-h-[140px]">
+            <div className="relative mb-6 lg:mb-12 lg:min-h-[140px]">
               <AnimatePresence mode="wait">
                 <motion.blockquote
                   key={activeIndex}
-                  className="text-4xl md:text-5xl font-light text-foreground leading-[1.15] tracking-tight"
+                  className="break-words text-xl font-light leading-snug tracking-tight text-foreground sm:text-3xl lg:text-5xl lg:leading-[1.15]"
                   initial="hidden"
                   animate="visible"
                   exit="exit"
                 >
+                  <span className="lg:hidden">{current.quote}</span>
                   {current.quote.split(" ").map((word, i) => (
                     <motion.span
                       key={i}
-                      className="inline-block mr-[0.3em]"
+                      className="mr-[0.3em] hidden lg:inline-block"
                       variants={{
                         hidden: { opacity: 0, y: 20, rotateX: 90 },
                         visible: {
@@ -176,7 +178,7 @@ export function Testimonial() {
             </div>
 
             {/* Author row */}
-            <div className="flex items-end justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-4 lg:items-end">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -184,11 +186,11 @@ export function Testimonial() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.4, delay: 0.2 }}
-                  className="flex items-center gap-4"
+                  className="flex min-w-0 items-center gap-4"
                 >
                   {/* Animated line before name */}
                   <motion.div
-                    className="w-8 h-px bg-foreground"
+                    className="hidden h-px w-8 shrink-0 bg-foreground lg:block"
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
@@ -202,10 +204,11 @@ export function Testimonial() {
               </AnimatePresence>
 
               {/* Navigation */}
-              <div className="flex items-center gap-4">
+              <div className="ml-auto flex shrink-0 items-center gap-2 lg:gap-4">
                 <motion.button
                   onClick={goPrev}
-                  className="group relative w-12 h-12 rounded-full border border-border flex items-center justify-center overflow-hidden"
+                  aria-label="Previous client perspective"
+                  className="group relative size-11 lg:size-12 rounded-full border border-border flex items-center justify-center overflow-hidden"
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div
@@ -232,7 +235,8 @@ export function Testimonial() {
 
                 <motion.button
                   onClick={goNext}
-                  className="group relative w-12 h-12 rounded-full border border-border flex items-center justify-center overflow-hidden"
+                  aria-label="Next client perspective"
+                  className="group relative size-11 lg:size-12 rounded-full border border-border flex items-center justify-center overflow-hidden"
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div
@@ -262,7 +266,7 @@ export function Testimonial() {
         </div>
 
         {/* Bottom ticker - subtle repeating service names */}
-        <div className="absolute -bottom-20 left-0 right-0 overflow-hidden opacity-[0.08] pointer-events-none">
+        <div aria-hidden="true" className="absolute hidden lg:block -bottom-20 left-0 right-0 overflow-hidden opacity-[0.08] pointer-events-none">
           <motion.div
             className="flex whitespace-nowrap text-6xl font-bold tracking-tight"
             animate={{ x: [0, -1000] }}
@@ -276,6 +280,6 @@ export function Testimonial() {
           </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
