@@ -106,7 +106,7 @@ function VideoBackground({ activeIndex, progress }: {
   }, [activeIndex, progress, reducedMotion]);
 
   return (
-    <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-[#090c13]">
+    <div aria-hidden="true" className="absolute inset-0 overflow-hidden bg-background">
       {chapters.map(({ scene }, index) => {
         const poster = `/videos/about/${scene}.jpg`;
         const mediaClass = "h-full w-full object-cover object-[72%_center] md:object-right";
@@ -133,7 +133,7 @@ function VideoBackground({ activeIndex, progress }: {
           </div>
         );
       })}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#090c13] from-10% via-[#090c13]/75 via-45% to-[#090c13]/10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background from-10% via-background/75 via-45% to-background/10" />
       <FilmGrain />
     </div>
   );
