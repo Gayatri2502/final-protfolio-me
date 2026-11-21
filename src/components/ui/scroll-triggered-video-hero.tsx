@@ -6,7 +6,7 @@ import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { ChevronRight, PlayCircle } from 'lucide-react';
 
 // --- Types & Data ---
-interface Chapter {
+interface Reason {
   id: string;
   title: string;
   subtitle: string;
@@ -15,30 +15,30 @@ interface Chapter {
   description: string;
 }
 
-const chapters: Chapter[] = [
+const chapters: Reason[] = [
   {
-    id: '01',
-    title: 'The Origin',
-    subtitle: 'Where the AI journey begins',
+    id: '1',
+    title: 'Move Faster',
+    subtitle: 'Move Faster Than Competitors',
     videoUrl: 'https://ik.imagekit.io/kqmrslzuq/Videos/1.mp4',
     theme: 'dark',
-    description: 'The moment this AI/ML portfolio begins — a first model, a first dataset, and a story in machine learning not yet written.',
+    description: 'Your competitors are already integrating AI. Staying outdated is always an option, though.',
   },
   {
-    id: '02',
-    title: 'Velocity',
-    subtitle: 'Shipping ML at lightspeed',
+    id: '2',
+    title: 'Scale Faster',
+    subtitle: 'Scale Faster & Save Time',
     videoUrl: 'https://cdn.21st.dev/assets/mirror/13/130f3cb22e97770a1e0a2c66893bf5b63a1c21fd47598839a04d3af34c9da165.mp4',
     theme: 'dark',
-    description: 'Experiments blur into production systems as the portfolio accelerates — every frame a new model shipped.',
+    description: 'Modern businesses scale with systems. You could keep using outdated workflows or build smarter ones that actually work.',
   },
   {
-    id: '03',
-    title: 'Immersion',
-    subtitle: 'Deep in the ML stack',
+    id: '3',
+    title: 'Automate Routine Work',
+    subtitle: 'Automate the Repetitive Work',
     videoUrl: 'https://cdn.21st.dev/assets/mirror/5d/5d00d3f51a1f753bb8f106955b9e116d86e82f34b173166ee79275ab10e670b1.mp4',
     theme: 'light',
-    description: 'You drift below the hype into real ML — evals, embeddings, and infrastructure. Noise fades, signal returns.',
+    description: 'Because manually doing everything in 2026 sounds exhausting.',
   },
 ];
 
@@ -130,7 +130,7 @@ const DynamicNav = ({
     >
       <div className="flex flex-col">
         <span className="text-[10px] uppercase tracking-widest text-white/50">
-          Chapter {chapters[activeIndex].id}
+          Reason {chapters[activeIndex].id}
         </span>
         <AnimatePresence mode="wait">
           <motion.span
@@ -212,11 +212,14 @@ export default function CinematicScrol() {
               viewport={{ once: false, margin: "-20%" }} 
               className="max-w-4xl pointer-events-auto"
             >
+              {chapter.id === "1" && (
+                <p className="mb-5 text-sm font-medium text-white">Why work with Alphacentauric?</p>
+              )}
               {/* Header Line */}
               <motion.div variants={fadeIn} className="flex items-center gap-4 mb-6">
                 <div className="h-0.5 w-12 bg-indigo-500" />
                 <span className="text-xs font-bold uppercase tracking-[0.3em] text-indigo-400">
-                  Chapter {chapter.id}
+                  Reason {chapter.id}
                 </span>
               </motion.div>
 

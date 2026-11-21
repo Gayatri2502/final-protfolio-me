@@ -21,7 +21,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="font-mono text-[12px] tracking-[0.14em] uppercase opacity-60 text-[#F2F0EB]">Hey. I&apos;m Gayatri — building Alphacentauric Studio,</p>
+            <p className="font-mono text-[12px] tracking-[0.14em] uppercase opacity-60 text-[#F2F0EB]">We help businesses scale through automation and build their digital presence at Alphacentauric Studio.</p>
 
             <h1 className="mt-3 font-display font-bold leading-[0.88] tracking-[-0.04em] text-[#F2F0EB]">
               <span className="block text-[clamp(2.4rem,6vw,4.2rem)]">BUILDING</span>
@@ -30,18 +30,19 @@ export function Hero() {
             </h1>
 
             <p className="mt-5 max-w-[360px] text-[13.5px] leading-6 text-[#F2F0EB]/60">
-              Building intelligent experiences with AI, thoughtful design, and systems made to scale. Explore the work behind Alphacentauric Studio below.
+              We build AI agents, automated workflows, websites and mobile apps, AI calling systems, smart assistants, ERP and CRM systems, project management tools, and data analytics solutions.
             </p>
 
             <a
               href={companyInfo.social.email}
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#F2F0EB] px-5 py-3 text-xs font-semibold tracking-widest uppercase text-[#08080A] hover:bg-white transition-colors"
             >
-              Contact me
+              Contact us
               <span className="flex size-6 items-center justify-center rounded-full bg-[#08080A] text-white">
                 <ArrowUpRight className="size-3.5" />
               </span>
             </a>
+            <a href="#selected-designs" className="ml-4 inline-block text-xs underline underline-offset-4">Scroll Down ↓</a>
           </motion.div>
 
           {/* CENTER — profile image */}
@@ -80,11 +81,11 @@ export function Hero() {
           >
             <div className="hidden lg:block space-y-7">
               <div>
-                <div className="font-display font-bold text-[28px] leading-none tracking-[-0.02em] text-[#F2F0EB]">5+</div>
+                <div className="font-display font-bold text-[28px] leading-none tracking-[-0.02em] text-[#F2F0EB]">3+</div>
                 <div className="mt-1 font-mono text-[11px] leading-4 tracking-wide uppercase opacity-60 text-[#F2F0EB]">Years in AI/ML</div>
               </div>
               <div>
-                <div className="font-display font-bold text-[28px] leading-none tracking-[-0.02em] text-[#F2F0EB]">20+</div>
+                <div className="font-display font-bold text-[28px] leading-none tracking-[-0.02em] text-[#F2F0EB]">5</div>
                 <div className="mt-1 font-mono text-[11px] leading-4 tracking-wide uppercase opacity-60 text-[#F2F0EB]">AI Projects Shipped</div>
               </div>
               <div>
@@ -99,8 +100,8 @@ export function Hero() {
 
             <div className="grid grid-cols-4 lg:hidden w-full gap-4 text-center">
               {[
-                { v: "5+", l: "AI/ML yrs" },
-                { v: "20+", l: "AI builds" },
+                { v: "3+", l: "AI/ML yrs" },
+                { v: "5", l: "AI builds" },
                 { v: "99.9%", l: "Uptime" },
                 { v: "500+", l: "Users" },
               ].map((s) => (

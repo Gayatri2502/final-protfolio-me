@@ -26,7 +26,7 @@ export function AboutSection() {
           <span className="text-foreground">[ About ]</span>
           <span>Gayatri Samal</span>
           <span className="h-px flex-1 bg-line ml-2" />
-          <span className="hidden sm:inline">AI/ML Portfolio • Engineer • Researcher</span>
+          <span className="hidden sm:inline">AI/ML Studio • Engineer • Researcher</span>
         </div>
 
         <div className="grid grid-cols-12 gap-8 lg:gap-12 items-start">

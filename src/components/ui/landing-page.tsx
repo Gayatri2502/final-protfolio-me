@@ -359,10 +359,10 @@ export default function GlobeScrollDemo() {
   const demoSections = [
     {
       id: "hero",
-      badge: "AI/ML Portfolio",
+      badge: "AI/ML Studio",
       title: "Explore",
       subtitle: "The AI World",
-      description: "Journey through this AI/ML portfolio where machine learning meets production. Watch as models shift from notebook to deployment with every scroll.",
+      description: "Journey through this AI/ML studio where machine learning meets production. Watch as models shift from notebook to deployment with every scroll.",
       align: "left" as const,
       actions: [
         { label: "Begin Journey", variant: "primary" as const, onClick: () => console.log("Get started clicked") },
@@ -393,8 +393,8 @@ export default function GlobeScrollDemo() {
       id: "future",
       badge: "AI Future",
       title: "Our Shared",
-      subtitle: "Model Portfolio",
-      description: "In this AI/ML portfolio you see not just projects, but production ML systems — every model evaluated, every pipeline monitored.",
+      subtitle: "Model Gallery",
+      description: "In this AI/ML studio you see not just projects, but production ML systems — every model evaluated, every pipeline monitored.",
       align: "center" as const,
       actions: [
         { label: "Start an AI Project", variant: "primary" as const, onClick: () => console.log("Join clicked") },

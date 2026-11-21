@@ -15,7 +15,7 @@ export default function NotFound() {
           Page not found
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          This AI/ML portfolio has no such page — but plenty of models that do exist.
+          This AI/ML studio has no such page — but plenty of models that do exist.
         </p>
         <Link
           href="/"

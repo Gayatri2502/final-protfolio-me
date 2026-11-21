@@ -79,37 +79,37 @@ const defaultItems: GsapFlipCardItem[] = [
   {
     id: 0,
     image: UNSPLASH("1500534623283-312aade485b7"),
-    alt: "Neural search engine — AI/ML portfolio build",
+    alt: "Neural search engine — AI/ML studio build",
     caption: "Semantic search over 10M+ docs — 95.2% recall@10, 87ms p95.",
   },
   {
     id: 1,
     image: UNSPLASH("1519681393784-d120267933ba"),
-    alt: "LLM fine-tuning platform — AI/ML portfolio build",
+    alt: "LLM fine-tuning platform — AI/ML studio build",
     caption: "LoRA/QLoRA platform for 7B–70B models, one-click vLLM deploy.",
   },
   {
     id: 2,
     image: UNSPLASH("1470252649378-9c29740c9fa8"),
-    alt: "Multimodal RAG system — AI/ML portfolio build",
+    alt: "Multimodal RAG system — AI/ML studio build",
     caption: "Text + image + code retrieval with citations — 40% fewer hallucinations.",
   },
   {
     id: 3,
     image: UNSPLASH("1506905925346-21bda4d32df4"),
-    alt: "AI code assistant — AI/ML portfolio build",
+    alt: "AI code assistant — AI/ML studio build",
     caption: "Repo-aware generation and refactor, streaming diffs in the IDE.",
   },
   {
     id: 4,
     image: UNSPLASH("1439066615861-d1af74d74000"),
-    alt: "MLOps pipeline — AI/ML portfolio build",
+    alt: "MLOps pipeline — AI/ML studio build",
     caption: "GitOps training to canary deploy — 80% faster releases.",
   },
   {
     id: 5,
     image: UNSPLASH("1444927714506-8492d94b4e3d"),
-    alt: "Edge AI inference — AI/ML portfolio build",
+    alt: "Edge AI inference — AI/ML studio build",
     caption: "Quantized serving at the edge — sub-10ms on device.",
   },
 ];
@@ -122,7 +122,7 @@ const defaultItems: GsapFlipCardItem[] = [
  */
 export default function GsapFlipCard({
   items = defaultItems,
-  title = "AI/ML Portfolio Gallery",
+  title = "AI/ML Studio Gallery",
   meta = "LLM / RAG / MLOps — AI Builds",
   description = "A flip-through of AI builds that fans into a hero and a rail. Tap any frame and the two trade places — every card a shipped ML system.",
   backgroundColor = "#e9e9e7",

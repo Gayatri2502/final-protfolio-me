@@ -26,7 +26,7 @@ export function DigitalProductsSection() {
             In the <span className="italic font-light text-muted-foreground">AI lab</span>
           </h2>
           <p className="hidden lg:block max-w-[420px] text-sm leading-6 text-muted-foreground">
-            Small ML bets, measured properly. Every experiment in this AI/ML portfolio ships with evals, ablations, and a short note.
+            Small ML bets, measured properly. Every experiment in this AI/ML studio ships with evals, ablations, and a short note.
           </p>
         </div>
 

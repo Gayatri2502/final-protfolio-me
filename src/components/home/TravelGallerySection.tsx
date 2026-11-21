@@ -50,7 +50,7 @@ export function TravelGallerySection() {
           <span className="text-[#0A0A0A]">[04]</span>
           <span>Beyond the models</span>
           <span className="h-px flex-1 bg-[#0A0A0A]/10 ml-2" />
-          <span className="hidden sm:inline">Flip to explore — the human behind this AI/ML portfolio</span>
+          <span className="hidden sm:inline">Flip to explore — the human behind this AI/ML studio</span>
         </div>
 
         <div className="mt-8 grid grid-cols-12 gap-8 items-start">
@@ -75,7 +75,7 @@ export function TravelGallerySection() {
             </div>
 
             <div className="mt-8 hidden lg:block rounded-2xl border border-[#0A0A0A]/10 bg-white p-5">
-              <div className="font-mono text-[10px] tracking-[0.14em] uppercase opacity-60">Why travel in an AI/ML portfolio?</div>
+              <div className="font-mono text-[10px] tracking-[0.14em] uppercase opacity-60">Why travel in an AI/ML studio?</div>
               <p className="mt-2 text-sm leading-6 text-[#0A0A0A]/70">
                 New streets, new constraints — the same curiosity that trains better models. 3D flip on hover, tap on mobile.
               </p>
@@ -94,7 +94,7 @@ export function TravelGallerySection() {
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-[#0A0A0A]/10 pt-6 mono-label text-[#0A0A0A]/50">
           <span>Next trip: Patagonia — Dec 2026 • open to co-travel builds</span>
-          <a href="mailto:hello@alphacentauric.dev" className="inline-flex items-center gap-1.5 rounded-full bg-[#0A0A0A] px-4 py-2 text-xs font-semibold tracking-widest uppercase text-white hover:bg-black transition-colors">
+          <a href="mailto:alphacentauric.ai@gmail.com" className="inline-flex items-center gap-1.5 rounded-full bg-[#0A0A0A] px-4 py-2 text-xs font-semibold tracking-widest uppercase text-white hover:bg-black transition-colors">
             Invite to collaborate →
           </a>
         </div>

@@ -7,22 +7,22 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 
 const testimonials = [
   {
-    quote: "Her RAG system transformed our entire support workflow overnight.",
-    author: "Sarah Chen",
-    role: "Head of AI",
-    company: "TechCorp AI",
+    quote: "Gayatri made the automation setup feel manageable. She explained each step patiently and showed our team how to adjust the workflows ourselves.",
+    author: "Example owner comment",
+    role: "Workflow automation & AI assistants",
+    company: "Automation",
   },
   {
-    quote: "The most elegant LLM platform we've ever deployed to production.",
-    author: "Marcus Webb",
-    role: "ML Lead",
-    company: "Neural Labs",
+    quote: "The website and booking system came together smoothly. Gayatri walked us through the decisions and taught us how to make updates after launch.",
+    author: "Example owner comment",
+    role: "Web design & SaaS development",
+    company: "Web & SaaS",
   },
   {
-    quote: "Pure ML craftsmanship in every single detail of this AI/ML portfolio.",
-    author: "Elena Frost",
-    role: "CTO",
-    company: "DataFlow",
+    quote: "Gayatri took the time to understand our sales and inventory processes. She explained how the CRM, ERP, and reporting fit together so we could use them with confidence.",
+    author: "Example owner comment",
+    role: "ERP, CRM & data analysis",
+    company: "Business systems",
   },
 ]
 
@@ -95,7 +95,7 @@ export function Testimonial() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
-              Testimonials
+              Example client perspectives
             </motion.span>
 
             {/* Vertical progress line */}

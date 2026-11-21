@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export interface GalleryPhoto {
@@ -31,9 +31,21 @@ export function InteractiveFolderGallery({
 }: InteractiveFolderGalleryProps) {
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [hoverFolder, setHoverFolder] = useState(false);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const [galleryWidth, setGalleryWidth] = useState(0);
+
+  useEffect(() => {
+    const gallery = galleryRef.current;
+    if (!gallery) return;
+    const observer = new ResizeObserver(([entry]) => setGalleryWidth(entry.contentRect.width));
+    observer.observe(gallery);
+    return () => observer.disconnect();
+  }, []);
+
+  const openSpacing = Math.min(130, Math.max(8, (galleryWidth - 236) / Math.max(1, photos.length - 1)));
 
   return (
-    <div className={`w-full py-12 relative ${className || ""}`}>
+    <div ref={galleryRef} className={`w-full py-12 relative ${className || ""}`}>
       <div className="relative w-full min-h-[500px] flex flex-col items-center justify-center">
 
         <div className="relative w-[400px] h-[500px] flex justify-center pointer-events-none z-0">
@@ -49,7 +61,7 @@ export function InteractiveFolderGallery({
 
           <div className="absolute bottom-10 z-10 flex justify-center">
             {photos.map((photo, i) => {
-              const offset = i - 2;
+              const offset = i - (photos.length - 1) / 2;
 
               const stackY = hoverFolder ? offset * -10 - 40 : offset * -5;
               const stackX = hoverFolder ? offset * 30 : offset * 3;
@@ -57,7 +69,7 @@ export function InteractiveFolderGallery({
               const stackScale = 1 - Math.abs(offset) * 0.03;
 
               const openY = -130;
-              const openX = offset * 130;
+              const openX = offset * openSpacing;
               const openRotate = 0;
               const openScale = 1.05;
 

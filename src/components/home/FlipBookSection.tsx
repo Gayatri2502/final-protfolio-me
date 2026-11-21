@@ -4,23 +4,33 @@ import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import FlipGallery from "@/components/ui/flip-gallery";
 
-const playbackKey = "alphacentauric:momo-intro";
+const muteKey = "alphacentauric:momo-muted";
 
 export function FlipBookSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    video.muted = sessionStorage.getItem(muteKey) === "true";
+    setMuted(video.muted);
+    let disposed = false;
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
       observer.disconnect();
-      if (sessionStorage.getItem(playbackKey) === "done") return;
-      video.play().catch(() => {});
+      video.play().catch((error: DOMException) => {
+        if (disposed || error.name !== "NotAllowedError" || video.muted) return;
+        video.muted = true;
+        setMuted(true);
+        void video.play().catch(() => {});
+      });
     }, { threshold: 0.35 });
     observer.observe(video);
-    return () => observer.disconnect();
+    return () => {
+      disposed = true;
+      observer.disconnect();
+    };
   }, []);
 
   function toggleMute() {
@@ -28,51 +38,42 @@ export function FlipBookSection() {
     if (!video) return;
     video.muted = !video.muted;
     setMuted(video.muted);
-    if (video.paused && sessionStorage.getItem(playbackKey) !== "done") {
-      video.play().catch(() => {});
-    }
+    sessionStorage.setItem(muteKey, String(video.muted));
+    if (video.paused) void video.play().catch(() => {});
   }
+
   return (
     <section className="relative bg-[#08080A] text-[#F2F0EB] border-y border-[#F2F0EB]/10">
       <div className="container-custom py-10 lg:py-14">
         <div className="flex items-center gap-4 mono-label text-[#F2F0EB]/60 border-b border-[#F2F0EB]/10 pb-6">
           <span className="text-[#D4FF32]">[05]</span>
-          <span>AI Journey</span>
+          <span>Meet Gayatri & Momo</span>
           <span className="h-px flex-1 bg-[#F2F0EB]/10 ml-2" />
-          <span className="hidden sm:inline">AI/ML Portfolio • Models • Research • Builds</span>
+          <span className="hidden sm:inline">Alphacentauric Studio</span>
         </div>
 
         <div className="mt-8 grid grid-cols-12 gap-8 items-center">
           <div className="col-span-12 lg:col-span-5">
             <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-[-0.04em] leading-[0.9] text-[#F2F0EB]">
-              Models
+              Hii, I&apos;m Gayatri Samal
               <br />
-              <span className="font-light italic tracking-[-0.03em] text-[#F2F0EB]/60">that ship.</span>
+              <span className="font-light italic tracking-[-0.03em] text-[#F2F0EB]/60">And here&apos;s my assistant, Momo. Together, we&apos;re building this AI space for small business owners.</span>
             </h2>
             <p className="mt-4 max-w-[420px] text-sm leading-6 text-[#F2F0EB]/60">
-              A flip-through of this AI/ML portfolio — five milestones from first model to production MLOps.
-              Each frame is a shipped AI system, not a demo.
+              You know that feeling when you&apos;re watching something and suddenly an idea clicks? That&apos;s how Alphacentauric got its name. It became an obsession and a reason to keep pushing myself.
+            </p>
+            <p className="mt-3 max-w-[420px] text-sm leading-6 text-[#F2F0EB]/60">
+              Every day, I realize building Alphacentauric was the best decision I could&apos;ve made. The journey has been exciting and challenging, and we&apos;re going to make it happen.
             </p>
             <div className="relative mt-6 max-w-[480px]">
               <video
                 ref={videoRef}
                 className="aspect-video w-full rounded-xl bg-black"
                 src="/videos/momo-introduction.mp4"
-                muted={muted}
+                loop
                 playsInline
                 disablePictureInPicture
                 preload="metadata"
-                onLoadedMetadata={({ currentTarget }) => {
-                  const saved = sessionStorage.getItem(playbackKey);
-                  if (saved === "done") currentTarget.currentTime = currentTarget.duration;
-                  else if (saved) currentTarget.currentTime = Math.min(Number(saved) || 0, currentTarget.duration);
-                }}
-                onTimeUpdate={({ currentTarget }) => {
-                  if (sessionStorage.getItem(playbackKey) !== "done") {
-                    sessionStorage.setItem(playbackKey, String(currentTarget.currentTime));
-                  }
-                }}
-                onEnded={() => sessionStorage.setItem(playbackKey, "done")}
                 aria-label="Momo introduces Alphacentauric"
               />
               <button type="button" onClick={toggleMute} aria-label={muted ? "Unmute Momo" : "Mute Momo"}

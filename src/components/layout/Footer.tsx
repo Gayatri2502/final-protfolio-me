@@ -12,13 +12,13 @@ export function Footer() {
             <a href="/" className="flex items-center gap-3">
               <span className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-sm font-bold">GS</span>
               <span className="font-display font-semibold">Gayatri Samal</span>
-              <span className="mono-label text-muted-foreground hidden sm:inline">— AI/ML Portfolio</span>
+              <span className="mono-label text-muted-foreground hidden sm:inline">— AI/ML Studio</span>
             </a>
             <p className="mt-4 max-w-[420px] text-sm leading-6 text-muted-foreground">
-              An AI/ML portfolio of intelligent systems that understand, reason, and create. Focus on reliability, speed, and craft.
+              We build AI systems that help businesses scale. AI automation and SaaS development studio.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 mono-label">
-              <span className="rounded-full border border-line bg-card px-3 py-1.5">SF · Remote</span>
+              <span className="rounded-full border border-line bg-card px-3 py-1.5">Mumbai · Remote</span>
               <span className="rounded-full border border-line bg-card px-3 py-1.5 flex items-center gap-2">
                 <span className="size-1.5 rounded-full bg-emerald-500 animate-pulseDot" />
                 Selective availability
@@ -41,12 +41,12 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <div className="mono-label text-muted-foreground mb-4">Expertise</div>
+            <div className="mono-label text-muted-foreground mb-4">Services</div>
             <ul className="space-y-2.5 text-sm text-muted-foreground">
-              <li><a href="/skills#ai-ml" className="hover:text-foreground">AI/ML Engineering</a></li>
-              <li><a href="/projects" className="hover:text-foreground">RAG & Retrieval</a></li>
-              <li><a href="/projects" className="hover:text-foreground">LLM Platforms</a></li>
-              <li><a href="/experience" className="hover:text-foreground">MLOps & Infra</a></li>
+              <li><a href="/services" className="hover:text-foreground">AI Automation & Agents</a></li>
+              <li><a href="/services" className="hover:text-foreground">Websites & Mobile Apps</a></li>
+              <li><a href="/services" className="hover:text-foreground">Custom SaaS</a></li>
+              <li><a href="/services" className="hover:text-foreground">ERP & CRM</a></li>
             </ul>
           </div>
 
@@ -69,7 +69,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-line pt-6 mono-label text-muted-foreground">
-          <span>© {year} Gayatri Samal · AI/ML Portfolio · Next.js · Deployed on Vercel</span>
+          <span>© {year} Gayatri Samal · AI/ML Studio</span>
           <a href="#main-content" className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1.5 hover:border-foreground/20 hover:text-foreground transition-colors">
             Back to top ↑
           </a>

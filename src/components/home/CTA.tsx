@@ -17,7 +17,7 @@ import { companyInfo } from "@/data/companyInfo";
 // minimal — not cards
 const LINKS = [
   { id: "email", label: "Email", href: companyInfo.social.email, icon: Mail },
-  { id: "wa", label: "WhatsApp", href: "https://wa.me/14155550139?text=Hi%20Gayatri%20—%20saw%20your%20portfolio!", icon: MessageCircle },
+  { id: "wa", label: "WhatsApp", href: "https://wa.me/14155550139?text=Hi%20Gayatri%20—%20saw%20your%20studio!", icon: MessageCircle },
   { id: "in", label: "LinkedIn", href: companyInfo.social.linkedin, icon: Linkedin },
   { id: "gh", label: "GitHub", href: companyInfo.social.github, icon: Github },
   { id: "x", label: "X", href: companyInfo.social.twitter, icon: Twitter },
@@ -91,7 +91,7 @@ export function CTA() {
             </h2>
 
             <p className="mt-3 text-sm leading-5 text-muted-foreground">
-              No forms. No spam. Just AI/ML builds for this portfolio&apos;s next chapter.
+              Tell us what you’d like to build with Alphacentauric Studio.
             </p>
 
             {/* — INTERACTIVE: drag-to-copy pill — unique, not a card */}

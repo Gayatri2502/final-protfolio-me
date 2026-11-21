@@ -36,7 +36,7 @@ export function CardsSliderSection() {
             AI work that <span className="italic font-light text-[#F2F0EB]/60">moves</span>
           </h2>
           <p className="hidden lg:block max-w-[360px] text-xs leading-5 text-[#F2F0EB]/50 font-mono">
-            Horizontal pinned scroll through this AI/ML portfolio — LLM, RAG, and MLOps builds in 3D as you scroll.
+            Horizontal pinned scroll through this AI/ML studio — LLM, RAG, and MLOps builds in 3D as you scroll.
           </p>
         </div>
       </div>

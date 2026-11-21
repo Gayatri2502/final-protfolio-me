@@ -45,7 +45,7 @@ const DEFAULT_SERVICES: ServiceItem[] = [
     title: "Data & ML Pipelines",
     tagline: "Clean data → trusted models",
     description:
-      "We turn messy sources into reliable, ML-ready data — pipelines, feature stores, and eval datasets that make this AI/ML portfolio possible. No more spreadsheet archaeology.",
+      "We turn messy sources into reliable, ML-ready data — pipelines, feature stores, and eval datasets that make this AI/ML studio possible. No more spreadsheet archaeology.",
     deliverables: [
       "ETL/ELT & Streaming Pipelines",
       "Warehouse & Lakehouse Setup",

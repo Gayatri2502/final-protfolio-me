@@ -15,15 +15,15 @@ export interface CompanyInfo {
 
 export const companyInfo: CompanyInfo = {
   name: "Gayatri Samal",
-  tagline: "AI/ML Portfolio — AI Engineer & Researcher",
-  description: "Welcome to my AI/ML portfolio — building intelligent systems that understand, reason, and create. Specializing in LLMs, RAG systems, and production ML infrastructure.",
-  email: "hello@alphacentauric.dev",
+  tagline: "AI/ML Studio — AI Engineer & Researcher",
+  description: "Welcome to my AI/ML studio — building intelligent systems that understand, reason, and create. Specializing in LLMs, RAG systems, and production ML infrastructure.",
+  email: "alphacentauric.ai@gmail.com",
   social: {
     github: "https://github.com/alphacentauric",
     linkedin: "https://linkedin.com/in/alphacentauric",
     twitter: "https://twitter.com/alphacentauric",
-    email: "mailto:hello@alphacentauric.dev",
+    email: "mailto:alphacentauric.ai@gmail.com",
   },
-  location: "San Francisco, CA",
+  location: "Mumbai, India",
   availability: "selective",
 };

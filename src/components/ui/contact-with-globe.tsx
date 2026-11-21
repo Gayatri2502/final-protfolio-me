@@ -4,8 +4,7 @@ import * as React from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Mail, Phone, MessageCircle, Linkedin, Github, Twitter, Instagram, Youtube } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Mail, Phone, MessageCircle, Linkedin, Github, Twitter, Instagram, Youtube } from "lucide-react";
 import { companyInfo } from "@/data/companyInfo";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import * as d3 from "d3";
@@ -27,7 +26,7 @@ const CONTACT_LINKS = [
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    href: "https://wa.me/918956784586?text=Hi%20Gayatri%20—%20saw%20your%20AI%2FML%20portfolio!",
+    href: "https://wa.me/918956784586?text=Hi%20Gayatri%20—%20saw%20your%20AI%2FML%20studio!",
   },
   {
     icon: Linkedin,
@@ -628,50 +627,6 @@ function GlobeWireframe({
   );
 }
 
-const FormDots = React.forwardRef<
-  React.ComponentRef<typeof SeparatorPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
->(
-  (
-    { className, orientation = "horizontal", decorative = true, ...props },
-    ref,
-  ) => {
-    const isHorizontal = orientation === "horizontal";
-    return (
-      <SeparatorPrimitive.Root
-        ref={ref}
-        decorative={decorative}
-        orientation={orientation}
-        className={cn(
-          "shrink-0 flex items-center justify-center overflow-hidden",
-          isHorizontal ? "w-full" : "h-full",
-          className,
-        )}
-        {...props}
-      >
-        <div
-          className={cn("relative", isHorizontal ? "w-full h-4" : "h-full w-4")}
-        >
-          <div
-            className={cn(
-              "absolute inset-0 bg-repeat",
-              "text-neutral-400 dark:text-white/20",
-            )}
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, currentColor 0.8px, transparent 0.8px)",
-              backgroundSize: isHorizontal ? "6px 100%" : "100% 6px",
-              maskImage: isHorizontal
-                ? "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)"
-                : "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-            }}
-          />
-        </div>
-      </SeparatorPrimitive.Root>
-    );
-  },
-);
-FormDots.displayName = "FormDots";
 
 interface ContactWithGlobeProps {
   title?: string;
@@ -682,8 +637,8 @@ interface ContactWithGlobeProps {
 
 export default function ContactWithGlobe({
   title = "Let's build AI together",
-  subtitle = "AI/ML Portfolio · Contact",
-  description = "This AI/ML portfolio is open for collaboration — RAG systems, LLM platforms, and production MLOps. Tell me about your project and I'll reply within one business day.",
+  subtitle = "AI/ML Studio · Contact",
+  description = "This AI/ML studio is open for collaboration — RAG systems, LLM platforms, and production MLOps. Tell me about your project and I'll reply within one business day.",
   className,
 }: ContactWithGlobeProps) {
   return (
@@ -722,13 +677,13 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.3, ease: smoothEase }}
-            className="text-base text-zinc-500 dark:text-zinc-400 max-w-md"
+            className="text-base text-zinc-500 dark:text-zinc-400 max-w-xl"
           >
             {description}
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto items-start">
+        <div className="mx-auto w-fit">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -761,74 +716,6 @@ export default function ContactWithGlobe({
 
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.0, delay: 0.35, ease: smoothEase }}
-            className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 sm:p-8 flex flex-col gap-5"
-          >
-            <div>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-0.5">
-                Tell me about your AI project
-              </h3>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Share your goals, data, and timeline — this AI/ML portfolio inbox gets a prompt reply.
-              </p>
-            </div>
-
-            <FormDots />
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-2">
-                <label className="text-xs font-semibold tracking-widest uppercase text-zinc-400 dark:text-zinc-500">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your full name"
-                  className="w-full bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-none focus:border-rose-400 dark:focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/10 transition-all duration-200"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-xs font-semibold tracking-widest uppercase text-zinc-400 dark:text-zinc-500">
-                  Company
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your company / lab"
-                  className="w-full bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-none focus:border-rose-400 dark:focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/10 transition-all duration-200"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold tracking-widest uppercase text-zinc-400 dark:text-zinc-500">
-                Email Address
-              </label>
-                <input
-                  type="email"
-                  placeholder="you@company.com"
-                className="w-full bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-none focus:border-rose-400 dark:focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/10 transition-all duration-200"
-              />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold tracking-widest uppercase text-zinc-400 dark:text-zinc-500">
-                Message
-              </label>
-              <textarea
-                placeholder="We're building a RAG system over 2M docs and need help with evals…"
-                rows={4}
-                className="w-full bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-zinc-800 dark:text-zinc-200 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-none focus:border-rose-400 dark:focus:border-rose-500/50 focus:ring-2 focus:ring-rose-500/10 resize-none transition-all duration-200"
-              />
-            </div>
-
-            <Button className="w-fit h-11 px-8 rounded-xl font-semibold text-sm bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-100 text-white dark:text-zinc-900 group">
-              Send message
-              <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </Button>
-          </motion.div>
         </div>
       </div>
     </section>

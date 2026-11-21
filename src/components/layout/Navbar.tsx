@@ -38,7 +38,7 @@ export function Navbar() {
           </span>
           <span className="flex items-center gap-4">
             <a href={companyInfo.social.email} className="hover:text-foreground transition-colors">{companyInfo.email}</a>
-            <span className="opacity-40">UTC−8 San Francisco</span>
+            <span className="opacity-40">UTC+5:30 Mumbai</span>
           </span>
         </div>
       </div>
@@ -61,7 +61,7 @@ export function Navbar() {
             <span className="flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-sm font-bold tracking-tight">GS</span>
             <span className="hidden sm:flex flex-col leading-none">
               <span className="font-display font-semibold text-sm tracking-tight">Gayatri Samal</span>
-              <span className="mono-label text-[9px] opacity-60 -mt-0.5">AI/ML PORTFOLIO</span>
+              <span className="mono-label text-[9px] opacity-60 -mt-0.5">AI/ML STUDIO</span>
             </span>
             <span className="sm:hidden font-display font-semibold text-sm">GS</span>
           </a>
@@ -137,7 +137,7 @@ export function Navbar() {
                   className="mt-10 space-y-6"
                 >
                   <a href={companyInfo.social.email} className="btn-acid w-full justify-center text-sm">
-                    hello@alphacentauric.dev
+                    alphacentauric.ai@gmail.com
                     <ArrowUpRight className="size-4" />
                   </a>
                   <div className="mono-label flex flex-wrap gap-3 text-muted-foreground">

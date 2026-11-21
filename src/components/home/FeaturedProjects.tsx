@@ -94,7 +94,7 @@ export function FeaturedProjects() {
             AI work that <span className="italic font-light text-muted-foreground">shipped</span>
           </h2>
           <p className="hidden lg:block max-w-[420px] text-sm leading-6 text-muted-foreground">
-            Production-grade AI from this AI/ML portfolio, not demos. Each project includes evals, metrics, and what I’d do differently next time.
+            Production-grade AI from this AI/ML studio, not demos. Each project includes evals, metrics, and what I’d do differently next time.
           </p>
         </div>
 
