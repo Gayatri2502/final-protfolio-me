@@ -24,11 +24,14 @@ export function FlipBookSection() {
               A flip-through of this AI/ML portfolio — five milestones from first model to production MLOps.
               Each frame is a shipped AI system, not a demo.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2 mono-label">
-              <span className="rounded-full border border-[#F2F0EB]/10 bg-[#F2F0EB]/10 px-3 py-1.5 text-[#F2F0EB]">LLM platforms</span>
-              <span className="rounded-full border border-[#F2F0EB]/10 bg-[#F2F0EB]/10 px-3 py-1.5 text-[#F2F0EB]">RAG systems</span>
-              <span className="rounded-full border border-[#F2F0EB]/10 bg-[#F2F0EB]/10 px-3 py-1.5 text-[#F2F0EB]">MLOps</span>
-            </div>
+            <video
+              className="mt-6 aspect-video w-full max-w-[480px] rounded-xl bg-black"
+              src="/videos/momo-introduction.mp4"
+              controls
+              playsInline
+              preload="metadata"
+              aria-label="Momo introduces Alphacentauric"
+            />
           </div>
 
           <div className="col-span-12 lg:col-span-7 flex justify-center">

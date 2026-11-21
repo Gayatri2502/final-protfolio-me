@@ -10,6 +10,7 @@ export interface ServiceItem {
   description: string;
   deliverables: string[];
   gradient: string;
+  projects?: { name: string; href: string }[];
 }
 
 interface StudiovaServicesTabsProps {
@@ -244,34 +245,22 @@ export function StudiovaServicesTabs({
                 </span>
               </div>
 
-              {/* Graphic Showcase Canvas Mockup */}
-              <div className="w-full h-48 rounded-xl bg-black/40 border border-white/10 flex flex-col items-center justify-center p-6 relative overflow-hidden mb-6 shadow-inner">
-                {/* Decorative Grid Lines */}
-                <div
-                  className="absolute inset-0 opacity-10 pointer-events-none"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
-                    backgroundSize: "24px 24px",
-                  }}
-                />
-
-                {/* Central Visual Icon */}
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary/20 to-white/10 border border-primary/40 flex items-center justify-center mb-3 shadow-[0_0_20px_hsl(var(--primary)/0.2)]">
-                  <svg
-                    className="w-8 h-8 text-primary stroke-current stroke-1.5 fill-none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                  </svg>
+              {activeService.projects && (
+                <div className="mb-6 rounded-xl border border-white/10 bg-black/40 p-5">
+                  <h4 className="text-sm font-semibold text-white">Implemented projects</h4>
+                  {activeService.projects.length ? (
+                    <ul className="mt-3 space-y-2">
+                      {activeService.projects.map(({ name, href }) => (
+                        <li key={href}>
+                          <a className="text-sm text-primary underline-offset-4 hover:underline" href={href} target="_blank" rel="noopener noreferrer">
+                            {name} ↗
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : <p className="mt-2 text-sm text-zinc-400">No related projects are published for this service yet.</p>}
                 </div>
-                <span className="text-sm font-bold text-white tracking-wide">
-                  {activeService.title}
-                </span>
-                <span className="text-[10px] text-zinc-400 font-mono mt-1">
-                  Ready for Production Implementation
-                </span>
-              </div>
+              )}
 
               <h4 className="text-lg font-bold text-white mb-2">
                 {activeService.tagline}

@@ -21,6 +21,7 @@ interface ScrollGlobeProps {
       scale: number;
     }[];
   };
+  scrollVisual?: React.ReactNode;
   className?: string;
 }
 
@@ -41,7 +42,7 @@ const lerp = (start: number, end: number, factor: number): number => {
 // Parse percentage string to number
 const parsePercent = (str: string): number => parseFloat(str.replace('%', ''));
 
-export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, className }: ScrollGlobeProps) {
+export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, scrollVisual, className }: ScrollGlobeProps) {
   const [activeSection, setActiveSection] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [globeTransform, setGlobeTransform] = useState("");
@@ -223,14 +224,14 @@ export function ScrollGlobe({ sections, globeConfig = defaultGlobeConfig, classN
 
       {/* Ultra-smooth Globe with responsive scaling */}
       <div
-        className="fixed z-10 pointer-events-none will-change-transform transition-all duration-[1400ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
+        className="fixed z-10 pointer-events-none will-change-transform transition-all motion-reduce:transition-none duration-[1400ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
         style={{
           transform: globeTransform,
           filter: `opacity(${activeSection === 3 ? 0.4 : 0.85})`, // Subtle opacity for backdrop effect
         }}
       >
         <div className="scale-75 sm:scale-90 lg:scale-100">
-          <Globe />
+          {scrollVisual ?? <Globe />}
         </div>
       </div>
 

@@ -49,7 +49,19 @@ const families = [
   ] },
 ];
 
-const services: ServiceItem[] = families.map((family, i) => ({ ...family, id: `service-${i}`, number: String(i + 1).padStart(2, "0"), gradient: "from-primary/20 via-primary/10 to-transparent" }));
+const relatedProjects: Record<string, [string, string][]> = {
+  "AI Automation Workflows": [["Research Studio", "multi-agent-research-assistant-langgraph-autogen-langchain-ollama"], ["Textbook Assistant", "textbook-assistant-rag-langchain"]],
+  "UI/UX Design & Branding": [["Maison Halden", "MAISON-HALDEN-STORE-WEB"], ["Moonlight Café", "MOONLIGHT-CAFE-RESERVATIONS"], ["Madhav Offset Printers", "Madhav"]],
+  "Web & E-commerce": [["Maison Halden", "MAISON-HALDEN-STORE-WEB"], ["Moonlight Café", "MOONLIGHT-CAFE-RESERVATIONS"], ["Madhav Offset Printers", "Madhav"]],
+  "ERP Systems": [["PhysioFlow Clinic ERP", "physioflow-clinic"], ["Drinkarto Distribution", "drinkarto-final"], ["Solar Sales Desk", "solar-sales-desk"]],
+  "CRM Systems": [["Solar Sales Desk", "solar-sales-desk"], ["Freelancer Tracker", "freelancer-tracker"]],
+  "Mobile & Custom Software": [["Freelancer Tracker", "freelancer-tracker"], ["Folio Finance", "AI-PRD"]],
+  "Data & AI": [["Alphacentauric Business Intelligence", "alphacentauric-business-intelligence-time-series"], ["Telecom Churn Analytics", "telecom-churn-business-analytics-dashboard"], ["AI Image Studio", "ai-image-generator"]],
+  "SEO, Video & Content": [["Maison Halden Runway Lookbook", "MAISON-HALDEN-STORE-WEB"]],
+  "Project Management & QA": [["Freelancer Tracker", "freelancer-tracker"]],
+};
+
+const services: ServiceItem[] = families.map((family, i) => ({ ...family, projects: (relatedProjects[family.title] ?? []).map(([name, repo]) => ({ name, href: `https://github.com/Gayatri2502/${repo}` })), id: `service-${i}`, number: String(i + 1).padStart(2, "0"), gradient: "from-primary/20 via-primary/10 to-transparent" }));
 const bundles = [
   { name: "Startup Launch", price: "₹60,000–₹1,50,000", time: "3–4 weeks", details: "A five-page website, logo and brand starter kit, basic SEO setup and one month of post-launch support." },
   { name: "Growth Suite", price: "₹3,50,000–₹8,00,000", time: "2–4 months", details: "Business website or store, starter CRM, UI/UX design, three months of SEO and a basic dashboard." },

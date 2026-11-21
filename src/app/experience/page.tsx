@@ -53,7 +53,10 @@ const experienceSections = [
 export default function ExperiencePage() {
   return (
     <div className="min-h-screen">
-      <ScrollGlobe sections={experienceSections} />
+      <ScrollGlobe
+        sections={experienceSections}
+        scrollVisual={<img src="/images/team/Momo.png" alt="" className="h-auto w-[clamp(220px,38vw,490px)] object-contain" />}
+      />
     </div>
   );
 }
