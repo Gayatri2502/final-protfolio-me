@@ -102,7 +102,7 @@ export function InteractiveFolderGallery({
                   whileDrag={isFolderOpen ? { scale: openScale + 0.1, rotate: 5, zIndex: 150 } : {}}
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 >
-                  <img src={photo.image} alt={photo.alt || "Gallery item"} className="w-full h-full object-cover pointer-events-none" />
+                  <img loading="lazy" decoding="async" src={photo.image} alt={photo.alt || "Gallery item"} className="w-full h-full object-cover pointer-events-none" />
                 </motion.div>
               );
             })}

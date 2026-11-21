@@ -74,7 +74,7 @@ export function FlipBookSection() {
                 loop
                 playsInline
                 disablePictureInPicture
-                preload="metadata"
+                preload="none"
                 aria-label="Momo introduces Alphacentauric"
               />
               <button type="button" onClick={toggleMute} aria-label={muted ? "Unmute Momo" : "Mute Momo"}

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { companyInfo } from "@/data/companyInfo";
@@ -15,11 +14,8 @@ export function Hero() {
         {/* main 3-col — text remains exact */}
         <div className="grid grid-cols-12 gap-6 lg:gap-4 items-center">
           {/* LEFT */}
-          <motion.div
+          <div
             className="col-span-12 lg:col-span-4 xl:col-span-4 order-2 lg:order-1"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="font-mono text-[12px] tracking-[0.14em] uppercase opacity-60 text-[#F2F0EB]">Helping brands create a digital presence</p>
 
@@ -43,41 +39,40 @@ export function Hero() {
               </span>
             </a>
             <a href="#selected-designs" className="ml-4 inline-block text-xs underline underline-offset-4">Scroll Down ↓</a>
-          </motion.div>
+          </div>
 
           {/* CENTER — profile image */}
-          <motion.div
+          <div
             className="col-span-12 lg:col-span-5 xl:col-span-4 order-1 lg:order-2 flex justify-center lg:pt-2"
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
             <button
               type="button"
               aria-label="Say hello to the Alphacentauric Studio penguin"
               aria-expanded={greetingOpen}
               onClick={() => setGreetingOpen((open) => !open)}
-              className="group relative mx-auto block rounded-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F2F0EB]"
+              className="group relative mx-auto block max-w-full rounded-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F2F0EB]"
             >
               <span className={`pointer-events-none absolute right-0 top-4 z-10 max-w-[190px] rounded-[28px] bg-[#F2F0EB] px-5 py-3 text-left text-sm font-medium leading-snug text-[#08080A] shadow-lg transition-all duration-300 motion-reduce:transition-none group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:scale-100 group-focus-visible:opacity-100 ${greetingOpen ? "translate-y-0 scale-100 opacity-100" : "translate-y-2 scale-95 opacity-0"}`}>
                 Hello! You landed in the right space. ✨
                 <span className="absolute -bottom-1 left-7 size-3 rotate-45 bg-[#F2F0EB]" />
               </span>
               <img
-                src="/images/penguin.png"
+                src="/images/penguin-640.webp"
+                srcSet="/images/penguin-320.webp 320w, /images/penguin-480.webp 480w, /images/penguin-640.webp 640w, /images/penguin-800.webp 800w, /images/penguin-1200.webp 1200w"
+                sizes="(min-width: 1280px) 400px, (min-width: 640px) 380px, (max-width: 359px) calc(100vw - 40px), 320px"
+                width={640}
+                height={640}
+                fetchPriority="high"
                 alt="Penguin character representing Alphacentauric Studio"
-                className="w-[320px] sm:w-[380px] lg:w-[380px] xl:w-[400px] h-[420px] sm:h-[480px] lg:h-[520px] object-contain object-center transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+                className="w-[320px] max-w-full sm:w-[380px] lg:w-[380px] xl:w-[400px] h-[420px] sm:h-[480px] lg:h-[520px] object-contain object-center transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
                 loading="eager"
               />
             </button>
-          </motion.div>
+          </div>
 
           {/* RIGHT stats */}
-          <motion.div
+          <div
             className="col-span-12 lg:col-span-3 xl:col-span-4 order-3 flex lg:flex-col justify-between lg:justify-center gap-6 lg:gap-10 lg:pl-8 xl:pl-12 lg:text-right py-4 lg:py-0 border-y lg:border-y-0 border-[#F2F0EB]/10"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="hidden lg:block space-y-7">
               <div>
@@ -111,15 +106,12 @@ export function Hero() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* bottom 4-col */}
-        <motion.div
+        <div
           className="mt-6 lg:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-0 border-t border-[#F2F0EB]/10"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           {[
             {
@@ -144,7 +136,7 @@ export function Hero() {
               <div className="mt-2 text-[12.5px] leading-5 text-[#F2F0EB]/60 max-w-[240px]">{item.desc}</div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

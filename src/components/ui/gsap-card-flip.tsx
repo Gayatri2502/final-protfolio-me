@@ -465,7 +465,7 @@ export default function GsapFlipCard({
               className="relative w-full flex-1 min-h-[45svh] overflow-hidden bg-[#d8d8d4] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.45)]"
               style={{ borderRadius: rounded }}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={heroItem.image}
                 alt={heroItem.alt ?? ""}
                 draggable={false}
@@ -514,7 +514,7 @@ export default function GsapFlipCard({
                   className="relative p-0 border-none overflow-hidden aspect-4/5 w-full bg-[#d8d8d4] [-webkit-tap-highlight-color:transparent]"
                   style={{ borderRadius: rounded * 0.6 }}
                 >
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={item.image}
                     alt={item.alt ?? ""}
                     draggable={false}
@@ -589,7 +589,7 @@ export default function GsapFlipCard({
               }`}
               style={cardStyle(itemIndex)}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={item.image}
                 alt={item.alt ?? ""}
                 draggable={false}
