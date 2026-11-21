@@ -108,7 +108,7 @@
     "screenshot": null
   },
   {
-    "description": null,
+    "description": "Local Stable Diffusion workspace with prompt controls, a generation queue and a saved image gallery.",
     "fork": false,
     "homepage": null,
     "html_url": "https://github.com/Gayatri2502/ai-image-generator",
@@ -117,7 +117,7 @@
     "private": false,
     "updated_at": "2026-11-10T21:35:26Z",
     "lab": true,
-    "screenshot": null
+    "screenshot": "/images/projects/image-studio.jpg"
   },
   {
     "description": null,
