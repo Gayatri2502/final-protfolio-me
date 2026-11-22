@@ -53,7 +53,7 @@ const relatedProjects: Record<string, [string, string][]> = {
   "AI Automation Workflows": [["Research Studio", "multi-agent-research-assistant-langgraph-autogen-langchain-ollama"], ["Textbook Assistant", "textbook-assistant-rag-langchain"]],
   "UI/UX Design & Branding": [["Maison Halden", "MAISON-HALDEN-STORE-WEB"], ["Moonlight Café", "MOONLIGHT-CAFE-RESERVATIONS"], ["Madhav Offset Printers", "Madhav"]],
   "Web & E-commerce": [["Maison Halden", "MAISON-HALDEN-STORE-WEB"], ["Moonlight Café", "MOONLIGHT-CAFE-RESERVATIONS"], ["Madhav Offset Printers", "Madhav"]],
-  "ERP Systems": [["PhysioFlow Clinic ERP", "physioflow-clinic"], ["Drinkarto Distribution", "drinkarto-final"], ["Solar Sales Desk", "solar-sales-desk"]],
+  "ERP Systems": [["PhysioFlow Clinic ERP", "physioflow-clinic"], ["Drinkarto", "drinkarto-final"], ["Solar Sales Desk", "solar-sales-desk"]],
   "CRM Systems": [["Solar Sales Desk", "solar-sales-desk"], ["Freelancer Tracker", "freelancer-tracker"]],
   "Mobile & Custom Software": [["Freelancer Tracker", "freelancer-tracker"], ["Folio Finance", "AI-PRD"]],
   "Data & AI": [["Alphacentauric Business Intelligence", "alphacentauric-business-intelligence-time-series"], ["Telecom Churn Analytics", "telecom-churn-business-analytics-dashboard"], ["AI Image Studio", "ai-image-generator"]],
