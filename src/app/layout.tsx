@@ -24,6 +24,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alphacentauric.com"),
   title: {
     default: "Gayatri Samal — AI/ML Studio",
     template: "%s | Alphacentauric Studio",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://alphacentauric.dev",
+    url: "https://alphacentauric.com",
     siteName: "Gayatri Samal · AI/ML Studio",
     title: "Gayatri Samal — AI/ML Studio",
     description: "An AI/ML studio of intelligent systems that understand, reason, and create.",
