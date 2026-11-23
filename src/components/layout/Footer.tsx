@@ -53,7 +53,7 @@ export function Footer() {
           <div className="lg:col-span-3">
             <div className="mono-label text-muted-foreground mb-4">Contact</div>
             <div className="space-y-2 text-sm">
-              <a href={companyInfo.social.email} className="block font-mono text-foreground hover:text-primary">
+              <a href={companyInfo.social.email} className="block break-words font-mono text-foreground hover:text-primary">
                 {companyInfo.email}
               </a>
               <div className="text-muted-foreground">{companyInfo.location}</div>

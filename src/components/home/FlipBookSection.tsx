@@ -52,8 +52,8 @@ export function FlipBookSection() {
           <span className="hidden sm:inline">Alphacentauric Studio</span>
         </div>
 
-        <div className="mt-8 grid grid-cols-12 gap-8 items-center">
-          <div className="col-span-12 lg:col-span-5">
+        <div className="mt-8 grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+          <div className="min-w-0 lg:col-span-5">
             <h2 className="font-display text-xl lg:text-2xl font-bold tracking-tight leading-tight text-[#F2F0EB]">
               Hii, I&apos;m Gayatri Samal
             </h2>
@@ -84,7 +84,7 @@ export function FlipBookSection() {
             </div>
           </div>
 
-          <div className="col-span-12 min-w-0 lg:col-span-7 flex justify-center">
+          <div className="min-w-0 lg:col-span-7 flex justify-center">
             <FlipGallery />
           </div>
         </div>

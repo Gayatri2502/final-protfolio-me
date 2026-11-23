@@ -49,11 +49,13 @@
     border-color: hsl(var(--border));
   }
   html {
+    overflow-x: clip;
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--border)) transparent;
   }
   body {
+    overflow-x: clip;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     -webkit-font-smoothing: antialiased;
