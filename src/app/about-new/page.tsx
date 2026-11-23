@@ -10,7 +10,7 @@ const team: LensSlide[] = [
   { title: "Mimi", image: "/images/team/Mimi.png", alt: "White fox with blue eyes", kicker: "Alphacentauric AI agent" },
 ];
 
-export const metadata: Metadata = { title: "About the Studio" };
+export const metadata: Metadata = { title: "Why Us" };
 
 export default function AboutNewPage() {
   return (
@@ -20,14 +20,14 @@ export default function AboutNewPage() {
         <div className="container-custom py-16 md:py-24">
           <p className="mono-label text-primary">Alphacentauric Studio</p>
           <h2 id="ai-team-title" className="mt-4 font-display text-4xl font-bold tracking-tight md:text-6xl">
-            Meet the <span className="text-primary">AI team.</span>
+            Meet the <span className="text-primary">AI Agents.</span>
           </h2>
           <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
             Momo, Toto, and Mimi are the three AI agents helping run Alphacentauric.
           </p>
           <CurvedLensCarousel
             slides={team}
-            label="Alphacentauric AI team"
+            label="Agent Names"
             background="transparent"
             height="clamp(480px, 75svh, 760px)"
             className="mt-10 rounded-2xl"
