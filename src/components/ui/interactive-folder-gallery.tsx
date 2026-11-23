@@ -21,13 +21,17 @@ export interface InteractiveFolderGalleryProps {
   folderName?: string;
   dragHintText?: string;
   className?: string;
+  emptyMessage?: string;
+  onPhotoSelect?: (id: GalleryPhoto["id"]) => void;
 }
 
 export function InteractiveFolderGallery({
   photos = defaultPhotos,
   folderName = "Projects.gallery",
   dragHintText = "Drag any project card down to close",
-  className
+  className,
+  emptyMessage,
+  onPhotoSelect,
 }: InteractiveFolderGalleryProps) {
   const [isFolderOpen, setIsFolderOpen] = useState(false);
   const [hoverFolder, setHoverFolder] = useState(false);
@@ -46,12 +50,12 @@ export function InteractiveFolderGallery({
 
   return (
     <div ref={galleryRef} className={`w-full py-12 relative ${className || ""}`}>
-      <div className="relative w-full min-h-[500px] flex flex-col items-center justify-center">
+      <div className="relative flex w-full flex-col items-center justify-center">
 
-        <div className="relative w-[400px] h-[500px] flex justify-center pointer-events-none z-0">
+        <div className={`relative z-0 flex w-full max-w-[400px] justify-center pointer-events-none ${photos.length ? "h-[500px]" : "h-64"}`}>
 
           <motion.div 
-            className="absolute bottom-6 w-80 h-56 drop-shadow-2xl"
+            className="absolute bottom-6 w-full max-w-80 h-56 drop-shadow-2xl"
             animate={{ opacity: isFolderOpen ? 0 : 1, scale: isFolderOpen ? 0.9 : 1 }}
           >
             <div className="absolute top-0 left-0 w-32 h-10 bg-gradient-to-t from-[#1e1e1e] to-[#2a2a2a] rounded-t-xl border-t border-l border-r border-white/10" />
@@ -102,14 +106,22 @@ export function InteractiveFolderGallery({
                   whileDrag={isFolderOpen ? { scale: openScale + 0.1, rotate: 5, zIndex: 150 } : {}}
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 >
+                  {onPhotoSelect && isFolderOpen && (
+                    <button type="button" onClick={() => onPhotoSelect(photo.id)} className="absolute inset-x-0 bottom-0 z-10 bg-black/85 px-3 py-3 text-sm text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px]">
+                      Preview {photo.alt}
+                    </button>
+                  )}
                   <img loading="lazy" decoding="async" src={photo.image} alt={photo.alt || "Gallery item"} className="w-full h-full object-cover pointer-events-none" />
                 </motion.div>
               );
             })}
           </div>
 
-          <motion.div 
-            className="absolute bottom-0 w-[340px] h-44 drop-shadow-[0_-20px_40px_rgba(0,0,0,0.8)] cursor-pointer z-20 pointer-events-auto"
+          <motion.button
+            type="button"
+            aria-expanded={isFolderOpen}
+            tabIndex={isFolderOpen ? -1 : 0}
+            className="absolute bottom-0 w-full max-w-[340px] h-44 drop-shadow-[0_-20px_40px_rgba(0,0,0,0.8)] cursor-pointer z-20 pointer-events-auto"
             style={{ transformOrigin: "bottom" }}
             animate={{ 
               opacity: isFolderOpen ? 0 : 1, 
@@ -130,11 +142,18 @@ export function InteractiveFolderGallery({
                 </span>
               </div>
             </div>
-          </motion.div>
+          </motion.button>
         </div>
 
+        {isFolderOpen && !photos.length && (
+          <div className="absolute inset-0 z-20 grid place-content-center gap-4 text-center">
+            <p>{emptyMessage}</p>
+            <button type="button" onClick={() => setIsFolderOpen(false)} className="rounded-full border border-white/20 px-4 py-2">Close folder</button>
+          </div>
+        )}
+
         <motion.div 
-          animate={{ opacity: isFolderOpen ? 1 : 0, y: isFolderOpen ? 0 : 50 }}
+          animate={{ opacity: isFolderOpen && photos.length ? 1 : 0, y: isFolderOpen ? 0 : 50 }}
           className="absolute bottom-4 lg:bottom-6 px-6 py-3 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 backdrop-blur-md text-black/50 dark:text-white/50 text-sm font-medium uppercase tracking-widest pointer-events-none"
         >
           {dragHintText}

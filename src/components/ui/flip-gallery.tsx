@@ -32,10 +32,11 @@ export default function FlipGallery() {
   };
 
   return (
-    <div className="min-h-[520px] flex items-center justify-center bg-[#0A0A0A] font-sans rounded-2xl overflow-hidden p-6">
+    <div className="relative mx-auto w-full max-w-[350px] bg-[#F2F0EB] p-3 text-zinc-900 shadow-2xl sm:p-5">
       <div className="relative">
+        <div aria-hidden="true" className="mb-2 font-display text-xs font-black tracking-[0.22em] sm:absolute sm:-left-10 sm:top-0 sm:mb-0 sm:text-sm sm:text-white/70 sm:[writing-mode:vertical-rl]">POLAROIDS</div>
         <div
-          className="relative w-[240px] h-[400px] md:w-[300px] md:h-[500px] text-center"
+          className="relative w-full aspect-[3/5] text-center"
           style={{ perspective: "1000px" }}
         >
           {/* Static bottom half — current image */}
@@ -43,7 +44,7 @@ export default function FlipGallery() {
             className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden"
             style={{
               backgroundImage: `url('${current.url}')`,
-              backgroundSize: "300px 500px",
+              backgroundSize: "100% 200%",
               backgroundPosition: "bottom",
               backgroundRepeat: "no-repeat",
             }}
@@ -54,7 +55,7 @@ export default function FlipGallery() {
             className="absolute top-0 left-0 w-full h-1/2 overflow-hidden"
             style={{
               backgroundImage: `url('${next.url}')`,
-              backgroundSize: "300px 500px",
+              backgroundSize: "100% 200%",
               backgroundPosition: "top",
               backgroundRepeat: "no-repeat",
             }}
@@ -69,7 +70,7 @@ export default function FlipGallery() {
             className="absolute top-0 left-0 w-full h-1/2 overflow-hidden origin-bottom z-10"
             style={{
               backgroundImage: `url('${isFlipping ? (direction === 1 ? current.url : next.url) : current.url}')`,
-              backgroundSize: "300px 500px",
+              backgroundSize: "100% 200%",
               backgroundPosition: "top",
               backgroundRepeat: "no-repeat",
               backfaceVisibility: "hidden",
@@ -85,7 +86,7 @@ export default function FlipGallery() {
             className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden origin-top z-10"
             style={{
               backgroundImage: `url('${isFlipping ? (direction === 1 ? next.url : current.url) : next.url}')`,
-              backgroundSize: "300px 500px",
+              backgroundSize: "100% 200%",
               backgroundPosition: "bottom",
               backgroundRepeat: "no-repeat",
               backfaceVisibility: "hidden",
@@ -95,38 +96,37 @@ export default function FlipGallery() {
             transition={{ duration: 0.375, delay: isFlipping ? 0.375 : 0, ease: "easeOut" }}
           />
 
-          {/* Title */}
+        </div>
+        <div className="mt-3 flex min-h-11 items-center justify-between gap-2">
           <AnimatePresence mode="wait">
-            <motion.div
+            <motion.p
               key={current.title}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 0.75, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.4 }}
-              className="absolute -bottom-10 left-0 font-mono text-xs tracking-[0.12em] uppercase text-white/75"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="min-w-0 font-mono text-[10px] font-bold uppercase tracking-wider"
             >
               {current.title}
-            </motion.div>
+            </motion.p>
           </AnimatePresence>
-        </div>
-
-        <div className="absolute top-full right-0 mt-4 flex gap-2">
-          <button
-            type="button"
-            onClick={() => go(-1)}
-            aria-label="Previous"
-            className="flex size-8 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white hover:bg-white/10 hover:scale-105 transition"
-          >
-            <ChevronLeft size={16} />
-          </button>
-          <button
-            type="button"
-            onClick={() => go(1)}
-            aria-label="Next"
-            className="flex size-8 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white hover:bg-white/10 hover:scale-105 transition"
-          >
-            <ChevronRight size={16} />
-          </button>
+          <div className="flex shrink-0 gap-1.5">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Previous"
+              className="flex size-11 items-center justify-center rounded-full border border-black/20 hover:bg-black/10 transition"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Next"
+              className="flex size-11 items-center justify-center rounded-full border border-black/20 hover:bg-black/10 transition"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
         </div>
       </div>
     </div>

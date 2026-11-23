@@ -23,6 +23,10 @@ export function VaultFlipSection() {
         backgroundColor="#08080A"
         textColor="#F2F0EB"
         mutedColor="#8a8a86"
+        heroWidth={640}
+        heroHeight={360}
+        thumbWidth={112}
+        thumbHeight={63}
         rounded={20}
         stackRotation={2}
       />

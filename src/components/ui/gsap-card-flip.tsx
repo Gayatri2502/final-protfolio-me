@@ -462,14 +462,14 @@ export default function GsapFlipCard({
 
           {heroItem && (
             <div
-              className="relative w-full flex-1 min-h-[45svh] overflow-hidden bg-[#d8d8d4] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.45)]"
-              style={{ borderRadius: rounded }}
+              className="relative w-full overflow-hidden bg-[#101014] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.45)]"
+              style={{ borderRadius: rounded, aspectRatio: heroWidth / heroHeight }}
             >
               <img loading="lazy" decoding="async"
                 src={heroItem.image}
                 alt={heroItem.alt ?? ""}
                 draggable={false}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-contain"
               />
             </div>
           )}
@@ -511,14 +511,14 @@ export default function GsapFlipCard({
                   type="button"
                   onClick={() => select(itemIndex)}
                   aria-label={item.alt ?? item.caption ?? `Image ${itemIndex + 1}`}
-                  className="relative p-0 border-none overflow-hidden aspect-4/5 w-full bg-[#d8d8d4] [-webkit-tap-highlight-color:transparent]"
-                  style={{ borderRadius: rounded * 0.6 }}
+                  className="relative p-0 border-none overflow-hidden w-full bg-[#101014] [-webkit-tap-highlight-color:transparent]"
+                  style={{ borderRadius: rounded * 0.6, aspectRatio: thumbWidth / thumbHeight }}
                 >
                   <img loading="lazy" decoding="async"
                     src={item.image}
                     alt={item.alt ?? ""}
                     draggable={false}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-contain"
                   />
                 </button>
               );
@@ -584,7 +584,7 @@ export default function GsapFlipCard({
               }
               aria-current={(opened && isHero) || undefined}
               tabIndex={!opened ? (itemIndex === order[0] ? 0 : -1) : isHero ? -1 : 0}
-              className={`p-0 border-none bg-[#d8d8d4] overflow-hidden shadow-[0_18px_40px_-24px_rgba(0,0,0,0.45)] [-webkit-tap-highlight-color:transparent] ${
+              className={`p-0 border-none bg-[#101014] overflow-hidden shadow-[0_18px_40px_-24px_rgba(0,0,0,0.45)] [-webkit-tap-highlight-color:transparent] ${
                 !opened || !isHero ? "cursor-pointer" : "cursor-default"
               }`}
               style={cardStyle(itemIndex)}
@@ -593,7 +593,7 @@ export default function GsapFlipCard({
                 src={item.image}
                 alt={item.alt ?? ""}
                 draggable={false}
-                className="absolute inset-0 h-full w-full object-cover rounded-[inherit]"
+                className="absolute inset-0 h-full w-full object-contain rounded-[inherit]"
               />
             </button>
           );

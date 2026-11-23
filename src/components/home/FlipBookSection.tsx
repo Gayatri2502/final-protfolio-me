@@ -58,7 +58,7 @@ export function FlipBookSection() {
               Hii, I&apos;m Gayatri Samal
             </h2>
             <p className="mt-2 max-w-[420px] text-sm leading-6 text-[#F2F0EB]/70">
-              And here&apos;s my assistant, Momo. Together, we&apos;re building this AI space for small business owners.
+              And here&apos;s my assistant, Momo. Together, we&apos;re building AI and digital tools for startups, business owners, medical teams, retailers, manufacturers, and professional service firms.
             </p>
             <p className="mt-4 max-w-[420px] text-sm leading-6 text-[#F2F0EB]/60">
               You know that feeling when you&apos;re watching something and suddenly an idea clicks? That&apos;s how Alphacentauric got its name. It became an obsession and a reason to keep pushing myself.
@@ -84,7 +84,7 @@ export function FlipBookSection() {
             </div>
           </div>
 
-          <div className="col-span-12 lg:col-span-7 flex justify-center">
+          <div className="col-span-12 min-w-0 lg:col-span-7 flex justify-center">
             <FlipGallery />
           </div>
         </div>

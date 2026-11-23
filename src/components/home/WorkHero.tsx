@@ -1,38 +1,53 @@
 "use client";
 
-import { galleryProjects } from "@/data/gallery-projects";
+import { useRef, useState } from "react";
 import { InteractiveFolderGallery } from "@/components/ui/interactive-folder-gallery";
+import { ebooks, type Ebook } from "@/data/ebooks";
 
 export function WorkHero() {
+  const reader = useRef<HTMLDialogElement>(null);
+  const [book, setBook] = useState<Ebook>();
+  const [page, setPage] = useState(0);
+
+  function openBook(id: string | number) {
+    const selected = ebooks.find((entry) => entry.id === id);
+    if (!selected?.pages.length) return;
+    setBook(selected);
+    setPage(0);
+    reader.current?.showModal();
+  }
+
   return (
-    <section id="selected-designs" className="relative bg-[#08080A] text-[#F2F0EB] border-y border-[#F2F0EB]/10 overflow-hidden">
-      {/* Bold horizontal title */}
-      <div className="w-full overflow-hidden border-b border-[#F2F0EB]/10">
-        <h2 className="font-display font-black leading-none tracking-[-0.05em] text-center whitespace-nowrap select-none"
-            style={{ fontSize: "clamp(3rem, 12vw, 14rem)" }}>
-          <span className="inline-block px-2 sm:px-4">SELECTED</span>
-          <span className="inline-block font-light italic text-[#F2F0EB]/40">—</span>
-          <span className="inline-block px-2 sm:px-4 text-transparent" style={{ WebkitTextStroke: "1.5px rgba(242,240,235,0.9)" }}>A</span>
-        </h2>
-      </div>
-
+    <section id="selected-designs" className="border-y border-white/10 bg-[#08080A] text-[#F2F0EB]">
+      <h2 className="border-b border-white/10 py-5 text-center font-display text-[clamp(2.75rem,10vw,10rem)] font-black uppercase leading-none tracking-tight">
+        Ebook Guides
+      </h2>
       <div className="container-custom">
-        <div className="flex flex-col items-center">
-          <div className="w-full max-w-5xl">
-            <div className="flex items-center justify-between mono-label text-[#F2F0EB]/50 pt-6">
-              <span>Website designs you might want to explore</span>
-              <span className="hidden sm:inline">Click folder to open • Drag card down to close</span>
-            </div>
-
-            <InteractiveFolderGallery
-              photos={galleryProjects}
-              folderName="Studio Web Designs"
-              dragHintText="Drag any project card down to close — hover folder to peek"
-              className="py-8 lg:py-12"
-            />
-          </div>
-        </div>
+        <InteractiveFolderGallery
+          photos={ebooks.map((entry) => ({ id: entry.id, image: entry.cover, alt: entry.title }))}
+          folderName="Ebook Collection"
+          dragHintText="Select an ebook to preview · Drag a cover down to close"
+          emptyMessage="Ebook guides are coming soon."
+          onPhotoSelect={openBook}
+          className="py-8 lg:py-12"
+        />
       </div>
+      <dialog ref={reader} aria-label={book?.title ?? "Ebook preview"} className="m-auto max-h-[90dvh] w-[min(94vw,52rem)] overflow-y-auto rounded-xl bg-zinc-950 p-4 text-white backdrop:bg-black/80 sm:p-6">
+        <header className="mb-4 flex items-center justify-between gap-4">
+          <h3 className="font-semibold">{book?.title}</h3>
+          <form method="dialog"><button className="rounded-lg border border-white/20 px-4 py-2">Close</button></form>
+        </header>
+        {book && (
+          <>
+            <img src={book.pages[page]} alt={`${book.title}, page ${page + 1}`} draggable={false} className="mx-auto max-h-[65dvh] max-w-full object-contain" />
+            <nav aria-label="Ebook pages" className="mt-4 flex items-center justify-between gap-2 text-sm">
+              <button type="button" disabled={page === 0} onClick={() => setPage(page - 1)} className="rounded-lg border border-white/20 px-3 py-2 disabled:opacity-40">Previous</button>
+              <span aria-live="polite">{page + 1} / {book.pages.length}</span>
+              <button type="button" disabled={page === book.pages.length - 1} onClick={() => setPage(page + 1)} className="rounded-lg border border-white/20 px-3 py-2 disabled:opacity-40">Next</button>
+            </nav>
+          </>
+        )}
+      </dialog>
     </section>
   );
 }
