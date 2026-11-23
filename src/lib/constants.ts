@@ -1,7 +1,7 @@
 export const NAV_ITEMS = [
   { label: "Why Us", href: "/about-new" },
   { label: "Work", href: "/projects" },
-  { label: "Experience", href: "/experience" },
+  { label: "Our Goal", href: "/our-goal" },
   { label: "Skills", href: "/skills" },
   { label: "Service", href: "/services" },
   { label: "Experiments", href: "/experiments" },

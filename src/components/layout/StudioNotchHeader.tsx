@@ -10,7 +10,7 @@ const STUDIO_ITEMS: (NotchItemData & { href: string })[] = [
   { id: "home", label: "Home", icon: Sparkles, href: "/" },
   { id: "about", label: "Why Us", icon: User, href: "/about-new" },
   { id: "work", label: "Projects", icon: Briefcase, href: "/projects" },
-  { id: "experience", label: "Experience", icon: Layers, href: "/experience" },
+  { id: "our-goal", label: "Our Goal", icon: Layers, href: "/our-goal" },
   { id: "skills", label: "Skills", icon: Cpu, href: "/skills" },
   { id: "service", label: "Service", icon: Wrench, href: "/services" },
   { id: "experiments", label: "Lab", icon: FlaskConical, href: "/experiments" },

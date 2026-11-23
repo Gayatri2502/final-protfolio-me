@@ -158,8 +158,8 @@ export function FeaturedProjects() {
           <a href="/projects" className="btn-acid">
             View all projects <ArrowUpRight className="size-3.5" />
           </a>
-          <a href="/experience" className="btn-ghost-mono">
-            Experience & impact
+          <a href="/our-goal" className="btn-ghost-mono">
+            Our Goal
           </a>
         </div>
       </div>
