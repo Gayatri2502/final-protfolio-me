@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { galleryProjects } from "@/data/gallery-projects";
 
 const projects = galleryProjects.filter((project) => project.featured);
@@ -11,7 +11,24 @@ const closedOutline = "polygon(0.6% 29%, 2.2% 27%, 69% 0.7%, 72% 0%, 93% 36%, 99
 export function VaultFlipSection() {
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState(0);
+  const closedLaptop = useRef<HTMLSpanElement>(null);
+  const openButton = useRef<HTMLButtonElement>(null);
+  const closeButton = useRef<HTMLButtonElement>(null);
+  const interacted = useRef(false);
+  const laptopInView = useInView(closedLaptop, { amount: 0.6 });
+  const reduceMotion = useReducedMotion();
   const project = projects[selected];
+
+  useEffect(() => {
+    if (interacted.current) {
+      (opened ? closeButton : openButton).current?.focus({ preventScroll: true });
+    }
+  }, [opened]);
+
+  function toggleLaptop() {
+    interacted.current = true;
+    setOpened((current) => !current);
+  }
 
   return (
     <section aria-labelledby="project-showcase-title" className="border-y border-white/10 bg-[#08080A] text-[#F2F0EB]">
@@ -20,34 +37,53 @@ export function VaultFlipSection() {
           <span>Project Showcase</span>
           <span className="h-px flex-1 bg-white/10" />
         </h2>
-        {!opened ? (
-          <button
+        <div className="mx-auto mt-5 grid max-w-5xl items-center">
+          <motion.button
+            ref={openButton}
             type="button"
-            title="Click the MacBook to open projects"
-            aria-expanded={false}
-            onClick={() => setOpened(true)}
-            className="group mx-auto mt-5 flex w-full max-w-[330px] flex-col items-center gap-1 rounded-lg focus-visible:outline focus-visible:outline-primary"
+            aria-label="Click the MacBook to open projects"
+            aria-expanded={opened}
+            aria-controls="macbook-projects"
+            aria-hidden={opened}
+            tabIndex={opened ? -1 : 0}
+            onClick={toggleLaptop}
+            initial={false}
+            animate={{ opacity: opened ? 0 : 1 }}
+            transition={{ duration: reduceMotion ? 0 : 0.3 }}
+            className={`group z-10 col-start-1 row-start-1 mx-auto flex w-full max-w-[330px] flex-col items-center gap-1 rounded-lg focus-visible:outline focus-visible:outline-primary ${opened ? "pointer-events-none" : ""}`}
           >
-            <span className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-xs text-white/80 group-hover:border-primary/60">
+            <motion.span
+              aria-hidden="true"
+              initial={false}
+              animate={{ opacity: laptopInView && !opened ? 1 : 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.2, delay: laptopInView && !opened && !reduceMotion ? 0.4 : 0 }}
+              className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-xs text-white/80 group-hover:border-primary/60"
+            >
               Click the MacBook to open projects
+            </motion.span>
+            <span ref={closedLaptop} className="relative block aspect-[414/309] w-full" style={{ clipPath: closedOutline }}>
+              <img src="/images/showcase/macbook-closed.png" alt="" className="absolute -left-[27.5%] -top-[28.8%] w-[154.1%] max-w-none" />
             </span>
-            <span className="relative block aspect-[414/309] w-full transition-transform group-hover:scale-[1.03] motion-reduce:transition-none" style={{ clipPath: closedOutline }}>
-              <img src="/images/showcase/macbook-closed.png" alt="" loading="lazy" className="absolute -left-[27.5%] -top-[28.8%] w-[154.1%] max-w-none" />
-            </span>
-          </button>
-        ) : (
-          <div className="mx-auto mt-5 grid max-w-5xl items-center gap-5 md:grid-cols-[minmax(0,1fr)_11rem]">
-            <div className="[perspective:1000px]">
+          </motion.button>
+          <motion.div
+            id="macbook-projects"
+            aria-hidden={!opened}
+            initial={false}
+            animate={{ opacity: opened ? 1 : 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.3 }}
+            className={`col-start-1 row-start-1 grid items-center gap-3 md:grid-cols-[11rem_minmax(0,1fr)_11rem] ${opened ? "" : "pointer-events-none"}`}
+          >
+            <div className="[perspective:1000px] md:col-start-2">
               <motion.div
-                initial={{ rotateX: 48, opacity: 0.4 }}
-                animate={{ rotateX: 0, opacity: 1 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="relative mx-auto aspect-[592/339] w-full max-w-[690px] origin-bottom motion-reduce:![transform:none] motion-reduce:!opacity-100"
+                initial={false}
+                animate={{ rotateX: opened || reduceMotion ? 0 : 65 }}
+                transition={{ duration: reduceMotion ? 0 : 0.3, ease: "easeInOut" }}
+                className="relative mx-auto aspect-[592/339] w-full max-w-[560px] origin-bottom"
                 style={{ clipPath: openOutline }}
               >
-                <img src="/images/showcase/macbook-open.png" alt="" className="absolute -left-[12.5%] -top-[59.3%] w-[125%] max-w-none" />
+                <img src="/images/showcase/macbook-open.png" alt="" loading="lazy" className="absolute -left-[12.5%] -top-[59.3%] w-[125%] max-w-none" />
                 <div className="absolute left-[11.15%] top-[5.9%] h-[85%] w-[77.7%] overflow-hidden bg-black">
-                  <img src={project.image} alt={project.alt} className="h-full w-full object-contain" />
+                  <img src={project.image} alt={project.alt} loading="lazy" className="h-full w-full object-contain" />
                 </div>
               </motion.div>
             </div>
@@ -61,18 +97,19 @@ export function VaultFlipSection() {
                     onClick={() => setSelected(index)}
                     aria-label={item.alt}
                     aria-pressed={index === selected}
+                    tabIndex={opened ? 0 : -1}
                     className="aspect-video overflow-hidden rounded border border-white/15 aria-pressed:border-primary focus-visible:outline focus-visible:outline-primary"
                   >
                     <img src={item.image} alt="" loading="lazy" className="h-full w-full object-cover object-top" />
                   </button>
                 ))}
               </div>
-              <button type="button" onClick={() => setOpened(false)} className="mt-4 rounded-full border border-white/20 px-3 py-2 text-xs hover:border-white/50">
+              <button ref={closeButton} type="button" tabIndex={opened ? 0 : -1} onClick={toggleLaptop} className="mt-4 rounded-full border border-white/20 px-3 py-2 text-xs hover:border-white/50">
                 Close MacBook
               </button>
             </div>
-          </div>
-        )}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

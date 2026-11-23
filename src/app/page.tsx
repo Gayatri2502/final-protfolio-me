@@ -15,8 +15,8 @@ export default function HomePage() {
       <Testimonial />
       {/* WORK hero — bold horizontal title + interactive folder */}
       <WorkHero />
-      <FlipBookSection />
       <VaultFlipSection />
+      <FlipBookSection />
     </>
   );
 }
