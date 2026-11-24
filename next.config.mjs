@@ -36,6 +36,15 @@ const nextConfig = {
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
       ],
+    }, {
+      source: "/contact",
+      headers: [{
+        key: "Content-Security-Policy",
+        value: contentSecurityPolicy.replace(
+          "frame-src 'none'",
+          "frame-src https://calendar.google.com/calendar/appointments/",
+        ),
+      }],
     }];
   },
 };

@@ -19,14 +19,14 @@ const smoothEase = [0.25, 0.1, 0.25, 1] as const;
 const CONTACT_LINKS = [
   {
     icon: Mail,
-    label: "alphacentauric.ai@gmail.com",
+    label: "Email",
     href: "mailto:alphacentauric.ai@gmail.com",
   },
-  { icon: Phone, label: "+91 8956784586", href: "tel:+918956784586" },
+  { icon: Phone, label: "Phone", href: "tel:+918956784586" },
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    href: `${companyInfo.social.whatsapp}?text=Hi%20Gayatri%20—%20saw%20your%20AI%2FML%20studio!`,
+    href: `${companyInfo.social.whatsapp}?text=Hi%20Gayatri%20%E2%80%94%20saw%20your%20AI%2FML%20studio!`,
   },
   {
     icon: Linkedin,
@@ -629,6 +629,7 @@ function GlobeWireframe({
 
 
 interface ContactWithGlobeProps {
+  children?: React.ReactNode;
   title?: string;
   subtitle?: string;
   description?: string;
@@ -640,6 +641,7 @@ export default function ContactWithGlobe({
   subtitle = "AI/ML Studio · Contact",
   description = "This AI/ML studio is open for collaboration — RAG systems, LLM platforms, and production MLOps. Tell me about your project and I'll reply within one business day.",
   className,
+  children,
 }: ContactWithGlobeProps) {
   return (
     <section
@@ -683,40 +685,26 @@ export default function ContactWithGlobe({
           </motion.p>
         </div>
 
-        <div className="mx-auto w-fit">
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.0, delay: 0.2, ease: smoothEase }}
-            className="flex flex-col gap-6"
-          >
-            <div className="flex flex-col gap-3">
-              {CONTACT_LINKS.map(({ icon: Icon, label, href }, i) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.3 + i * 0.1,
-                    ease: smoothEase,
-                  }}
-                  className="group flex items-center gap-3 w-fit text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700 group-hover:border-rose-300 dark:group-hover:border-rose-500/40 group-hover:bg-rose-50 dark:group-hover:bg-rose-500/10 flex items-center justify-center shrink-0 transition-all duration-200">
-                    <Icon className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 group-hover:text-rose-500 dark:group-hover:text-rose-400 transition-colors duration-200" />
-                  </div>
-                  {label}
-                </motion.a>
-              ))}
-            </div>
+        {children}
 
-          </motion.div>
-
-        </div>
+        <nav aria-label="Contact and social links" className="mx-auto flex max-w-lg flex-wrap justify-center gap-2 sm:gap-3">
+          {CONTACT_LINKS.map(({ icon: Icon, label, href }) => (
+            <a
+              key={label}
+              href={href}
+              aria-label={label}
+              className="group relative grid size-11 shrink-0 place-items-center rounded-xl border border-zinc-700 bg-zinc-800/80 text-zinc-300 hover:border-primary/60 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              <Icon aria-hidden="true" className="size-4" />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none invisible absolute bottom-full left-1/2 z-10 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-white px-2.5 py-1 text-xs font-medium text-zinc-900 group-hover:visible group-focus-visible:visible"
+              >
+                {label}
+              </span>
+            </a>
+          ))}
+        </nav>
       </div>
     </section>
   );
