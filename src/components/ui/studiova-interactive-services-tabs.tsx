@@ -1,7 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
+import { ArrowUpRight, BarChart3, ClipboardCheck, ContactRound, Globe, Layers3, PanelsTopLeft, ScanSearch, Smartphone, Workflow } from "lucide-react";
+
+const serviceIcons = {
+  workflow: Workflow,
+  design: PanelsTopLeft,
+  web: Globe,
+  operations: Layers3,
+  customers: ContactRound,
+  mobile: Smartphone,
+  data: BarChart3,
+  content: ScanSearch,
+  quality: ClipboardCheck,
+};
 
 export interface ServiceItem {
   id: string;
@@ -11,25 +23,8 @@ export interface ServiceItem {
   description: string;
   deliverables: string[];
   gradient: string;
-  illustration?: string;
+  icon?: keyof typeof serviceIcons;
   projects?: { name: string; href: string }[];
-}
-
-function ServiceIllustration({ service, className }: { service: ServiceItem; className: string }) {
-  if (!service.illustration) return null;
-
-  return (
-    <div className={`relative mx-auto aspect-[4/3] w-full max-w-md ${className}`}>
-      <Image
-        key={service.illustration}
-        src={service.illustration}
-        alt={`Momo illustrating ${service.title}`}
-        fill
-        unoptimized
-        className="object-contain"
-      />
-    </div>
-  );
 }
 
 interface StudiovaServicesTabsProps {
@@ -126,19 +121,17 @@ export function StudiovaServicesTabs({
   heading = "What we do",
   subheading = "A glimpse into our multidisciplinary execution—exploring luxury design systems, successful venture collaborations, and transformative digital experiences.",
   services = DEFAULT_SERVICES,
-  brandLink = "https://scriptly.store/",
+  brandLink = "/contact",
   className = "",
 }: StudiovaServicesTabsProps) {
   const [activeTab, setActiveTab] = useState(services[0].id);
   const activeService = services.find((s) => s.id === activeTab) || services[0];
+  const ActiveServiceIcon = activeService.icon ? serviceIcons[activeService.icon] : null;
 
   return (
     <section
       className={`py-16 px-4 md:px-8 bg-[#090a0f] text-white relative overflow-hidden font-sans ${className}`}
     >
-      {/* Subtle background glow */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header Block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
@@ -153,9 +146,9 @@ export function StudiovaServicesTabs({
           </div>
 
           <div className="lg:col-span-8 max-w-2xl">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3">
               {heading}
-            </h2>
+            </h1>
             <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
               {subheading}
             </p>
@@ -168,6 +161,7 @@ export function StudiovaServicesTabs({
           <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
             {services.map((item) => {
               const isActive = item.id === activeTab;
+              const ServiceIcon = item.icon ? serviceIcons[item.icon] : null;
 
               return (
                 <div
@@ -192,7 +186,7 @@ export function StudiovaServicesTabs({
                             : "bg-white/5 text-zinc-400"
                         }`}
                       >
-                        {item.number}
+                        {ServiceIcon ? <ServiceIcon aria-hidden="true" className="size-4" /> : item.number}
                       </span>
                       <h3
                         className={`text-lg md:text-xl font-bold transition-colors ${
@@ -222,8 +216,7 @@ export function StudiovaServicesTabs({
 
                   {/* Expanded Content for Active Tab */}
                   {isActive && (
-                    <div className="mt-4 pt-4 border-t border-white/10 animate-fadeIn">
-                      <ServiceIllustration service={item} className="mb-4 lg:hidden" />
+                    <div className="mt-4 pt-4 border-t border-white/10">
                       <p className="text-xs font-medium text-primary mb-2 font-mono">
                         {item.tagline}
                       </p>
@@ -265,11 +258,15 @@ export function StudiovaServicesTabs({
                 </span>
               </div>
 
-              <ServiceIllustration service={activeService} className="mb-6 hidden lg:block" />
+              {ActiveServiceIcon && (
+                <div className="mb-5 hidden size-12 place-items-center rounded-xl border border-primary/20 bg-primary/10 text-primary lg:grid">
+                  <ActiveServiceIcon aria-hidden="true" className="size-6" />
+                </div>
+              )}
 
               {activeService.projects && (
                 <div className="mb-6 rounded-xl border border-white/10 bg-black/40 p-5">
-                  <h4 className="text-sm font-semibold text-white">Implemented projects</h4>
+                  <h4 className="text-sm font-semibold text-white">Related work</h4>
                   {activeService.projects.length ? (
                     <ul className="mt-3 space-y-2">
                       {activeService.projects.map(({ name, href }) => (
@@ -296,16 +293,11 @@ export function StudiovaServicesTabs({
             <div className="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between">
               <a
                 href={brandLink}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="text-xs font-bold text-primary hover:underline flex items-center gap-1.5"
               >
-                <span>Explore on Scriptly</span>
-                <span>↗️</span>
+                <span>Discuss this service</span>
+                <ArrowUpRight aria-hidden="true" className="size-3.5" />
               </a>
-              <span className="text-[10px] font-mono text-zinc-500">
-                Studiova Agency Suite
-              </span>
             </div>
           </div>
         </div>

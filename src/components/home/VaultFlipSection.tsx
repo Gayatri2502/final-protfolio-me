@@ -68,7 +68,7 @@ export function VaultFlipSection() {
               Click the MacBook to open projects
             </motion.span>
             <span ref={closedLaptop} className="relative block aspect-[414/309] w-full" style={{ clipPath: closedOutline }}>
-              <img src="/images/showcase/macbook-closed.webp" alt="" loading="lazy" className="absolute -left-[27.5%] -top-[28.8%] w-[154.1%] max-w-none" />
+              <img src="/images/showcase/macbook-closed.webp" alt="" loading="eager" className="absolute -left-[27.5%] -top-[28.8%] w-[154.1%] max-w-none" />
             </span>
           </motion.button>
           <motion.div
